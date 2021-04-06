@@ -1,0 +1,26 @@
+.app_wrapper {
+  display: grid;
+  grid-template-areas:
+  'h h'
+  'n p';
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-area: h;
+  background-color: mediumslateblue;
+}
+
+.navbar {
+  grid-area: n;
+  background-color: mediumpurple;
+  border-top-right-radius: 15px;
+}
+
+.profile {
+  grid-area: p;
+  background-color: hotpink;
+  border-top-left-radius: 15px;
+}

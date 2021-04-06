@@ -1,0 +1,10 @@
+.profile {
+
+}
+
+.myProfile img {
+    height: 100px;
+    background: transparent;
+    border: 2px solid hotpink;
+    border-radius: 15px;
+}
