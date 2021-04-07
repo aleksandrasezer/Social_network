@@ -2,4 +2,12 @@
     grid-area: n;
     background-color: mediumpurple;
     border-top-right-radius: 15px;
+    padding: 15px;
+}
+.item a {
+    text-decoration: none;
+    color:white;
+}
+.item a.activeLink {
+    color: gold;
 }

@@ -10,7 +10,7 @@ function Post(props: PostType) {
         <div className={s.post}>
             <div>
                 <img
-                    src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"/>
+                    src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg" alt="avatar"/>
             </div>
             <div>
                 Post number {props.postText}
