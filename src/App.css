@@ -8,18 +8,7 @@
   grid-gap: 10px;
 }
 
-.header {
-  grid-area: h;
-  background-color: mediumslateblue;
-}
-
-.navbar {
-  grid-area: n;
-  background-color: mediumpurple;
-  border-top-right-radius: 15px;
-}
-
-.profile {
+.app_wrapper_content {
   grid-area: p;
   background-color: hotpink;
   border-top-left-radius: 15px;

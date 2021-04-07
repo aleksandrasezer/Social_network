@@ -1,0 +1,5 @@
+.navbar {
+    grid-area: n;
+    background-color: mediumpurple;
+    border-top-right-radius: 15px;
+}
