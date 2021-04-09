@@ -1,8 +1,9 @@
 .profile {
-
+    padding: 15px;
 }
 
-.myProfile img {
+.profile img {
+
     height: 100px;
     background: transparent;
     border: 2px solid hotpink;

@@ -1,35 +1,21 @@
 import React from "react";
 import s from "./Dialogs.module.css"
 import Messages from "./messages/Messages";
-import {BrowserRouter, NavLink} from "react-router-dom";
-import {Route} from "react-router-dom";
+import Dialog from "./Dialog/Dialog";
 
 function Dialogs() {
     return (
-        <BrowserRouter>
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.activeDialog} to="/tatiana">Tatiana</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.activeDialog} to="/dasha">Dasha</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.activeDialog} to="/victor">Victor</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.activeDialog} to="/ergun">Ergun</NavLink>
-                </div>
+                <Dialog id={1} name="Tatiana"/>
+                <Dialog id={2} name="Dasha"/>
+                <Dialog id={3} name="Victor"/>
+                <Dialog id={4} name="Ergun"/>
             </div>
             <div className={s.messages}>
-                <Route path="/tatiana" component={Messages} />
-                <Route path="/dasha" component={Messages} />
-                <Route path="/victor" component={Messages} />
-                <Route path="/ergun" component={Messages} />
+                <Messages/>
             </div>
         </div>
-        </BrowserRouter>
     )
 }
 

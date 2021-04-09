@@ -16,16 +16,19 @@ function MyPosts() {
                 </div>
             </div>
             <div>
-                <Post postText={"Hello there"}/>
+                <Post
+                    avatar="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+                    postText={"Hello there"}/>
             </div>
             <div>
-                <Post postText={"It's cold in here"}/>
+                <Post
+                    avatar="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+                    postText={"It's cold in here"}/>
             </div>
             <div>
-                <Post postText={"But summer is coming"}/>
-            </div>
-            <div>
-                <Post postText={"Wait little"}/>
+                <Post
+                    avatar="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+                    postText={"But summer is coming"}/>
             </div>
         </div>
     )

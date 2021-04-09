@@ -1,8 +1,19 @@
 .post {
+    padding: 15px;
+}
+.postBody {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
 
 }
-
 .post img {
     height: 50px;
     border-radius: 15px;
+}
+.postAvatar {
+}
+.postText {
+    border: 1px solid lightpink;
+    border-radius: 15px;
+    padding: 15px;
 }
