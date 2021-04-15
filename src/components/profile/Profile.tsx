@@ -2,8 +2,13 @@ import React from "react";
 import s from "./Profile.module.css"
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {postsType} from "../../redux/state";
 
-function Profile() {
+type ProfilePropsType = {
+    posts: postsType
+}
+
+function Profile(props: ProfilePropsType) {
     return (
         <div>
             <div className={s.profile}>
@@ -14,7 +19,7 @@ function Profile() {
                     aboutMe="Assigned cool at birth"/>
             </div>
             <div>
-                <MyPosts/>
+                <MyPosts posts={props.posts}/>
             </div>
         </div>
     )

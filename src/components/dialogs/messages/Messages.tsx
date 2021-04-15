@@ -1,13 +1,18 @@
 import React from "react";
-import s from "./Messages.module.css"
-import Message from "./Message/Message";
+import s from "./Messages.module.css";
+import Message from "./Message";
+import {messagesType} from "../../../redux/state";
 
-function Messages() {
+type MessagesPropsType = {
+    messages: messagesType
+}
+
+function Messages(props: MessagesPropsType) {
+    let messagesItems = props.messages.map((el) => <Message id={el.id} message={el.messageText} />)
+    console.log(props.messages)
     return (
         <div className={s.messages}>
-            <Message id={1} message="Hello" />
-            <Message id={2} message="What's up" />
-            <Message id={3} message="You here?" />
+            {messagesItems}
         </div>
     )
 }
