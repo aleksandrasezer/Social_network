@@ -6,6 +6,7 @@ import {postsType} from "../../redux/state";
 
 type ProfilePropsType = {
     posts: postsType
+    addPost: (postMessage: string) => void
 }
 
 function Profile(props: ProfilePropsType) {
@@ -19,7 +20,7 @@ function Profile(props: ProfilePropsType) {
                     aboutMe="Assigned cool at birth"/>
             </div>
             <div>
-                <MyPosts posts={props.posts}/>
+                <MyPosts posts={props.posts} addPost={props.addPost}/>
             </div>
         </div>
     )

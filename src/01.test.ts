@@ -1,6 +1,5 @@
 import {mult, sum} from "./01";
 
-
 let a: number,
     b: number,
     c:number

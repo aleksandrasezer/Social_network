@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 export type stateType = {
     profilePage: {posts: postsType}
     dialogsPage: {
@@ -5,10 +7,10 @@ export type stateType = {
         dialogs: dialogsType}
     }
 export type postsType = Array<postType>
-type postType = {
+export type postType = {
     id: number
     postText: string
-    avatar: string
+    likesCount: number
 }
 export type messagesType = Array<messageType>
 type messageType = {
@@ -24,11 +26,11 @@ type dialogType = {
 let state: stateType = {
     profilePage: {
         posts: [
-            {id: 1, postText: "Hello there", avatar: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+            {id: 1, postText: "Hello there", likesCount: 8
             },
-            {id: 2, postText: "It's cold in here", avatar: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+            {id: 2, postText: "It's cold in here", likesCount: 12
             },
-            {id: 3, postText: "I miss my mom", avatar: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10a06adc92c1746b48b842c031199d692b1ba623_full.jpg"
+            {id: 3, postText: "I miss my mom", likesCount: 35
             },
         ]},
     dialogsPage: {
@@ -43,4 +45,9 @@ let state: stateType = {
 
 }
 
+export const addPost = (postMessage: string) => {
+    const newPost: postType = {id: 5, postText: postMessage, likesCount: 0}
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}
 export default state;
