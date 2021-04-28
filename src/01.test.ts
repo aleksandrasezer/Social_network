@@ -27,5 +27,26 @@ test ('Sum should be correct', () => {
     expect(result2).toBe(5)
 })
 
+test('filter should work', () =>{
+    const family = [
+        {name: 'Mom', age: 49},
+        {name: 'Dad', age: 48},
+        {name: 'Dasha', age: 20}
+    ]
+    const parents = family.filter((mem) => mem.age > 40)
+    expect(parents.length).toBe(2)
+})
+
+test('map should work', () =>{
+    const family = [
+        {name: 'Mom', age: 49},
+        {name: 'Dad', age: 48},
+        {name: 'Dasha', age: 20}
+    ]
+    family.map((mem) => mem.age -= 1)
+    expect(family.length).toBe(3)
+    expect(family[0].age).toBe(48)
+})
+
 
 
