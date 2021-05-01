@@ -1,4 +1,5 @@
-import {mult, sum} from "./01";
+import {changeCity, changeJobTitle, guys, GuysType, mult, sum, user} from "./01";
+
 
 let a: number,
     b: number,
@@ -48,5 +49,21 @@ test('map should work', () =>{
     expect(family[0].age).toBe(48)
 })
 
+test('new city should work', () => {
+    const userWithNewCity = changeCity(user,'Doha')
+
+    expect(userWithNewCity.address).not.toBe(user.address)
+    expect(userWithNewCity.address.city).toBe('Doha')
+    expect(user.address.city).toBe('Milas')
+})
+
+test('Jobtitle should be changed', () => {
+    let newGuysArray:GuysType =
+        changeJobTitle(guys,'George',1,'Yandex')
+
+    expect(newGuysArray).not.toBe(guys)
+    expect(newGuysArray['George']).not.toBe(guys['George'])
+    expect(newGuysArray['George'][0].job).toBe('Yandex')
+})
 
 
