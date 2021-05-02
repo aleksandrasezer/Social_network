@@ -49,8 +49,13 @@ let state: stateType = {
 
 }
 
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText
+    console.log('post is changing..')
+    renderTree()
+}
 export const addPost = () => {
-    const newPost: postType = {
+    let newPost: postType = {
         id: 5,
         postText: state.profilePage.newPostText,
         likesCount: 0}
@@ -58,9 +63,6 @@ export const addPost = () => {
     state.profilePage.newPostText = ''
     renderTree()
 }
-export const updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText = newText
-    renderTree()
-}
+
 
 export default state;

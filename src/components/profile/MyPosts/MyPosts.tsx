@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {postsType} from "../../../redux/state";
@@ -16,9 +16,12 @@ function MyPosts(props: MyPostsPropsType) {
     let addPost = () => {
         props.addPost(props.newPostText)
     }
-    let onPostChange = () => {
-        let text = newPostElement.current ? newPostElement.current.value : '0'
-        props.updateNewPostText(text)
+    let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        if (e.currentTarget) {
+            let text = e.currentTarget.value
+            props.updateNewPostText(text)
+            //alert(text)
+        }
     }
     return (
         <div className={s.myPosts}>
