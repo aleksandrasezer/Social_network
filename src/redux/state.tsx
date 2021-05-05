@@ -1,11 +1,12 @@
 export type StoreType = {
     _state: StateType
-    updateNewPostText: (newText: string) => void
-    addPost: () => void
-    renderTree: () => void
+     renderTree: () => void
     subscriber: (observer: () => void) => void
     getState: () => StateType
+    dispatch: (action: ActionTypes) => void
 }
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC>
 export type StateType = {
     profilePage: {posts: PostType[], newPostText: string}
     dialogsPage: {
@@ -54,24 +55,35 @@ export const store: StoreType = {
                 {id: 4, name: "Ergun"},]
         }
     },
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText
-        console.log('post is changing..')
-        this.renderTree()
-    },
-    addPost() {
-        let newPost: PostType = {
-            id: 5,
-            postText: this._state.profilePage.newPostText,
-            likesCount: 0
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: 5,
+                postText: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this.renderTree()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            console.log('post is changing..')
+            this.renderTree()
         }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this.renderTree()
     },
     renderTree() {console.log('state changed')},
     subscriber(observer) {
         this.renderTree = observer
     },
     getState() {return this._state}
+}
+
+export const addPostAC = () => {
+    return {type: 'ADD-POST'} as const
+}
+export const updateNewPostTextAC = (text: string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: text
+    } as const
 }
