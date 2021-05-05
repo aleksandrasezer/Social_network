@@ -5,10 +5,10 @@ import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import Dialogs from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {stateType} from "./redux/state";
+import {StateType} from "./redux/state";
 
 type AppPropsType = {
-    state: stateType
+    state: StateType
     addPost: (postMessage: string) => void
     updateNewPostText: (newText: string) => void
 }
