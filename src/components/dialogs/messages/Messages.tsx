@@ -1,13 +1,9 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import s from "./Messages.module.css";
 import Message from "./Message";
-import {
-    ActionTypes,
-    addMessageAC,
-    MessageType,
-    updateNewMessageBodyAC
-} from "../../../redux/state";
+import {ActionTypes, MessageType} from "../../../redux/state";
 import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
+import {addMessageAC, updateNewMessageBodyAC} from "../../../redux/dialogs-reducer";
 
 type MessagesPropsType = {
     messages: MessageType[]
