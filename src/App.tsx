@@ -20,7 +20,8 @@ function App(props: AppPropsType) {
                 <div className="app_wrapper_content">
                     <Route path='/dialogs' render = {() => <Dialogs dialogs={props.state.dialogsPage.dialogs}
                                                                     messages={props.state.dialogsPage.messages}
-                                                                    dispatch={props.dispatch}/>} />
+                                                                    dispatch={props.dispatch}
+                                                                    newMessageBody={props.state.dialogsPage.newMessageBody}/>} />
                     <Route path='/profile' render = {() => <Profile posts={props.state.profilePage.posts}
                                                                     dispatch={props.dispatch}
                                                                     newPostText={props.state.profilePage.newPostText} />} />

@@ -2,6 +2,7 @@ import React, {ChangeEvent} from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {ActionTypes, addPostAC, PostType, updateNewPostTextAC} from "../../../redux/state";
+import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
 
 type MyPostsPropsType = {
     posts: PostType[]
@@ -16,12 +17,9 @@ function MyPosts(props: MyPostsPropsType) {
     const addPost = () => {
         props.dispatch(addPostAC())
     }
-    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        if (e.currentTarget) {
-            let text = e.currentTarget.value
+    const onPostChange = (text: string) => {
             props.dispatch(updateNewPostTextAC(text))
-            /*alert(text)*/
-        }}
+        }
 
     let onTextClickHandler = () => props.dispatch(updateNewPostTextAC(''))
 
@@ -33,8 +31,9 @@ function MyPosts(props: MyPostsPropsType) {
                     New post
                 </div>
                 <div>
-                    <textarea onChange={onPostChange}
-                              onClick={onTextClickHandler} value={props.newPostText}/>
+                    <ControlledTextarea onPostChange={onPostChange}
+                                        value={props.newPostText}
+                                        onTextClick={onTextClickHandler}/>
                     <button onClick={addPost}>Add post</button>
                 </div>
             </div>

@@ -8,6 +8,7 @@ type DialogsPropsType = {
     messages: MessageType[]
     dialogs: DialogType[]
     dispatch: (action: ActionTypes) => void
+    newMessageBody: string
 }
 function Dialogs(props: DialogsPropsType) {
     // @ts-ignore
@@ -18,7 +19,9 @@ function Dialogs(props: DialogsPropsType) {
                 { dialogsItems }
             </div>
             <div className={s.messages}>
-                <Messages messages={props.messages} dispatch={props.dispatch}/>
+                <Messages messages={props.messages}
+                          newMessageBody={props.newMessageBody}
+                          dispatch={props.dispatch}/>
             </div>
         </div>
     )

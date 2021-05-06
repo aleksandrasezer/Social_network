@@ -7,10 +7,12 @@ import {
     MessageType,
     updateNewMessageBodyAC
 } from "../../../redux/state";
+import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
 
 type MessagesPropsType = {
     messages: MessageType[]
     dispatch: (action: ActionTypes) => void
+    newMessageBody: string
 }
 
 
@@ -18,11 +20,8 @@ function Messages(props: MessagesPropsType) {
 
     const addNewMessage = () => props.dispatch(addMessageAC())
 
-    const onMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        if (e.currentTarget) {
-            let text = e.currentTarget.value
+    const onMessageChangeHandler = (text: string) => {
             props.dispatch(updateNewMessageBodyAC(text))
-        }
     }
 
     let onTextClickHandler = () => props.dispatch(updateNewMessageBodyAC(''))
@@ -37,8 +36,10 @@ function Messages(props: MessagesPropsType) {
             </div>
             <div>
                 <div>
-                        <textarea onChange={onMessageChangeHandler}
-                                  onClick={onTextClickHandler}/>
+                    <ControlledTextarea onPostChange={onMessageChangeHandler}
+                                        value={props.newMessageBody}
+                                        onTextClick={onTextClickHandler} />
+
                 </div>
                 <div>
                     <button onClick={addNewMessage}> Send
