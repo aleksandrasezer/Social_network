@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import {addMessageAC, dialogsReducer, updateNewMessageBodyAC} from "./dialogs-reducer";
-import {addPostAC, profileReducer, updateNewPostTextAC} from "./profile-reducer";
+import {addPostAC, profileReducer, removePostAC, updateNewPostTextAC} from "./profile-reducer";
 
 export type StoreType = {
     _state: StateType
@@ -13,7 +13,8 @@ export type StoreType = {
 export type ActionTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostTextAC> |
     ReturnType<typeof updateNewMessageBodyAC> |
-    ReturnType<typeof addMessageAC>
+    ReturnType<typeof addMessageAC> |
+    ReturnType<typeof removePostAC>
 export type StateType = {
     profilePage: { posts: PostType[], newPostText: string }
     dialogsPage: {
@@ -23,7 +24,7 @@ export type StateType = {
     }
 }
 export type PostType = {
-    id: number
+    id: string
     postText: string
     likesCount: number
 }
@@ -36,20 +37,13 @@ export type DialogType = {
     name: string
 }
 
-
 export const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
-                {
-                    id: 1, postText: "Hello there", likesCount: 8
-                },
-                {
-                    id: 2, postText: "It's cold in here", likesCount: 12
-                },
-                {
-                    id: 3, postText: "I miss my mom", likesCount: 35
-                },
+                {id: v1(), postText: "Hello there", likesCount: 8},
+                {id: v1(), postText: "It's cold in here", likesCount: 12},
+                {id: v1(), postText: "I miss my mom", likesCount: 35},
             ],
             newPostText: 'write something..'
         },

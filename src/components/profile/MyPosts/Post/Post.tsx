@@ -1,9 +1,16 @@
 import React from "react";
 import s from "./Post.module.css"
-import {PostType} from "../../../../redux/store";
+import {ActionTypes, PostType} from "../../../../redux/store";
 import {Button} from "../../../Button/Button";
+import {removePostAC} from "../../../../redux/profile-reducer";
 
-function Post(props: PostType) {
+type PostPropsType = PostType &
+    {dispatch: (action: ActionTypes) => void}
+
+function Post(props: PostPropsType) {
+
+    const removePost = (id: string) => props.dispatch(removePostAC(id))
+
     return (
         <div className={s.post}>
             <div className={s.postBody}>
@@ -16,7 +23,7 @@ function Post(props: PostType) {
             </div>
             <div className={s.likeArea}>
                 <span>likesCount = {props.likesCount}</span>
-                <Button onClick={() => {}}> Remove </Button>
+                <Button onClick={() => removePost(props.id)}> Remove </Button>
             </div>
         </div>
     )

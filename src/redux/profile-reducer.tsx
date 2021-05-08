@@ -1,12 +1,17 @@
 import {ActionTypes, PostType} from "./store";
+import {v1} from "uuid";
 
 type ProfilePageType = { posts: PostType[], newPostText: string }
 
 export const profileReducer = (state: ProfilePageType, action: ActionTypes) => {
     switch (action.type) {
+        case 'REMOVE-POST':
+            state.posts = state.posts.filter(p => p.id !== action.id)
+            console.log('removing post..')
+            return state
         case 'ADD-POST':
             let newPost: PostType = {
-                id: 5,
+                id: v1(),
                 postText: state.newPostText,
                 likesCount: 0
             }
@@ -27,5 +32,11 @@ export const updateNewPostTextAC = (text: string) => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: text
+    } as const
+}
+export const removePostAC = (id: string) => {
+    return {
+        type: 'REMOVE-POST',
+        id: id
     } as const
 }
