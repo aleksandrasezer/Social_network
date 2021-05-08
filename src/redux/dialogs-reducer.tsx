@@ -1,4 +1,4 @@
-import {ActionTypes, DialogType, MessageType} from "./state";
+import {ActionTypes, DialogType, MessageType} from "./store";
 import {v1} from "uuid";
 
 type DialogsPageType = {

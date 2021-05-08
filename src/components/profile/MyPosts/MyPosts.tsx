@@ -1,9 +1,10 @@
 import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {ActionTypes, PostType} from "../../../redux/state";
+import {ActionTypes, PostType} from "../../../redux/store";
 import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
+import {Button} from "../../Button/Button";
 
 type MyPostsPropsType = {
     posts: PostType[]
@@ -29,13 +30,10 @@ function MyPosts(props: MyPostsPropsType) {
             My posts
             <div>
                 <div>
-                    New post
-                </div>
-                <div>
                     <ControlledTextarea onPostChange={onPostChange}
                                         value={props.newPostText}
                                         onTextClick={onTextClickHandler}/>
-                    <button onClick={addPost}>Add post</button>
+                    <Button onClick={addPost}>Add post</Button>
                 </div>
             </div>
             <div>

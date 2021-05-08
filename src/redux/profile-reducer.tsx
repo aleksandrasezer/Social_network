@@ -1,4 +1,4 @@
-import {ActionTypes, PostType} from "./state";
+import {ActionTypes, PostType} from "./store";
 
 type ProfilePageType = { posts: PostType[], newPostText: string }
 
@@ -10,7 +10,7 @@ export const profileReducer = (state: ProfilePageType, action: ActionTypes) => {
                 postText: state.newPostText,
                 likesCount: 0
             }
-            state.posts.push(newPost)
+            state.posts.unshift(newPost)
             state.newPostText = ''
             return state
         case 'UPDATE-NEW-POST-TEXT':

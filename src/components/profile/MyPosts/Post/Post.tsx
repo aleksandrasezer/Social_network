@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Post.module.css"
-import {PostType} from "../../../../redux/state";
+import {PostType} from "../../../../redux/store";
+import {Button} from "../../../Button/Button";
 
 function Post(props: PostType) {
     return (
@@ -15,7 +16,7 @@ function Post(props: PostType) {
             </div>
             <div className={s.likeArea}>
                 <span>likesCount = {props.likesCount}</span>
-                <button>Remove</button>
+                <Button onClick={() => {}}> Remove </Button>
             </div>
         </div>
     )

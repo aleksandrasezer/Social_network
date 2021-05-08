@@ -1,9 +1,10 @@
 import React from "react";
 import s from "./Messages.module.css";
 import Message from "./Message";
-import {ActionTypes, MessageType} from "../../../redux/state";
+import {ActionTypes, MessageType} from "../../../redux/store";
 import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
 import {addMessageAC, updateNewMessageBodyAC} from "../../../redux/dialogs-reducer";
+import {Button} from "../../Button/Button";
 
 type MessagesPropsType = {
     messages: MessageType[]
@@ -38,8 +39,8 @@ function Messages(props: MessagesPropsType) {
 
                 </div>
                 <div>
-                    <button onClick={addNewMessage}> Send
-                    </button>
+                    <Button onClick={addNewMessage}> Send
+                    </Button>
                 </div>
             </div>
         </div>
