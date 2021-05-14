@@ -7,7 +7,19 @@ type DialogsPageType = {
     newMessageBody: string
 }
 
-export const dialogsReducer = (state: DialogsPageType, action: ActionTypes) => {
+let initialStore = {
+    messages: [{id: v1(), messageText: "Hi, how are you?"},
+        {id: v1(), messageText: "Summer is coming!"},
+        {id: v1(), messageText: "Yo"},
+        {id: v1(), messageText: "Yoyo"}],
+    dialogs: [{id: v1(), name: "Tatiana"},
+        {id: v1(), name: "Dasha"},
+        {id: v1(), name: "Victor"},
+        {id: v1(), name: "Ergun"},],
+    newMessageBody: 'write something:)'
+}
+
+export const dialogsReducer = (state: DialogsPageType = initialStore, action: ActionTypes) => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':
             state.newMessageBody = action.newMessageText

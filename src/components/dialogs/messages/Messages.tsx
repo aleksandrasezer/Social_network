@@ -17,9 +17,7 @@ function Messages(props: MessagesPropsType) {
 
     const addNewMessage = () => props.dispatch(addMessageAC())
 
-    const onMessageChangeHandler = (text: string) => {
-            props.dispatch(updateNewMessageBodyAC(text))
-    }
+    const onMessageChangeHandler = (text: string) => props.dispatch(updateNewMessageBodyAC(text))
 
     let onTextClickHandler = () => props.dispatch(updateNewMessageBodyAC(''))
 
@@ -36,7 +34,6 @@ function Messages(props: MessagesPropsType) {
                     <ControlledTextarea onPostChange={onMessageChangeHandler}
                                         value={props.newMessageBody}
                                         onTextClick={onTextClickHandler} />
-
                 </div>
                 <div>
                     <Button onClick={addNewMessage}> Send
