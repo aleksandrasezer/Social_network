@@ -20,7 +20,8 @@ export function ControlledTextarea(props: ControlledTextareaPropsTYpe) {
         <div className={s.input}>
             <textarea onChange={onPostChangeHandler}
                       value={props.value}
-                      onClick={props.onTextClick}/>
+                      onClick={props.onTextClick}
+                      autoFocus/>
         </div>
     )
 }

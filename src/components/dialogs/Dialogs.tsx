@@ -2,26 +2,30 @@ import React from "react";
 import s from "./Dialogs.module.css"
 import Messages from "./messages/Messages";
 import Dialog from "./Dialog/Dialog";
-import {ActionTypes, DialogType, MessageType} from "../../redux/store";
+import {DialogType, MessageType} from "../../redux/store";
 
 type DialogsPropsType = {
     messages: MessageType[]
     dialogs: DialogType[]
-    dispatch: (action: ActionTypes) => void
-    newMessageBody: string
+    newMessageText: string
+    addNewMessage: () => void
+    onMessageChangeHandler: (text: string) => void
+    onTextClickHandler: () => void
 }
 function Dialogs(props: DialogsPropsType) {
-    // @ts-ignore
-    let dialogsItems = props.dialogs.map((el) => <Dialog id={el.id} name={el.name} />)
+
+    let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name} />)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 { dialogsItems }
             </div>
             <div className={s.messages}>
-                <Messages messages={props.messages}
-                          newMessageBody={props.newMessageBody}
-                          dispatch={props.dispatch}/>
+                <Messages   messages={props.messages}
+                          newMessageText={props.newMessageText}
+                          addNewMessage={props.addNewMessage}
+                          onMessageChangeHandler={props.onMessageChangeHandler}
+                          onTextClickHandler={props.onTextClickHandler}/>
             </div>
         </div>
     )
