@@ -1,13 +1,10 @@
 import React from "react";
 import s from "./Profile.module.css"
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionTypes, PostType} from "../../redux/store";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 type ProfilePropsType = {
-    posts: PostType[]
-    newPostText: string
-    dispatch: (action: ActionTypes) => void
+    store: any
 }
 
 function Profile(props: ProfilePropsType) {
@@ -21,9 +18,7 @@ function Profile(props: ProfilePropsType) {
                     aboutMe="Assigned cool at birth"/>
             </div>
             <div>
-                <MyPosts posts={props.posts}
-                         dispatch={props.dispatch}
-                         newPostText={props.newPostText} />
+                <MyPostsContainer store={props.store} />
             </div>
         </div>
     )

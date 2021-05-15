@@ -10,6 +10,7 @@ import {ActionTypes, StateType} from "./redux/store";
 type AppPropsType = {
     state: StateType
     dispatch: (action: ActionTypes) => void
+    store: any
 }
 function App(props: AppPropsType) {
     return (
@@ -22,9 +23,7 @@ function App(props: AppPropsType) {
                                                                     messages={props.state.dialogsPage.messages}
                                                                     dispatch={props.dispatch}
                                                                     newMessageBody={props.state.dialogsPage.newMessageBody}/>} />
-                    <Route path='/profile' render = {() => <Profile posts={props.state.profilePage.posts}
-                                                                    dispatch={props.dispatch}
-                                                                    newPostText={props.state.profilePage.newPostText} />} />
+                    <Route path='/profile' render = {() => <Profile store={props.store} />} />
                 </div>
             </div>
         </BrowserRouter>

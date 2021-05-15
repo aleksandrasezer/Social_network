@@ -1,30 +1,28 @@
 import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {ActionTypes, PostType} from "../../../redux/store";
+import {PostType} from "../../../redux/store";
 import {ControlledTextarea} from "../../ControlledTextarea/ControlledTextarea";
-import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 import {Button} from "../../Button/Button";
 
 type MyPostsPropsType = {
     posts: PostType[]
     newPostText: string
-    dispatch: (action: ActionTypes) => void
+    removePost: (id: string) => void
+    addPost: () => void
+    onPostChange: (text: string) => void
+    onTextClickHandler: () => void
 }
 
 function MyPosts(props: MyPostsPropsType) {
     let myPostsItems = props.posts.map((el) => <Post id={el.id}
                                                      postText={el.postText}
                                                      likesCount={el.likesCount}
-                                                     dispatch={props.dispatch}/>)
-    const addPost = () => {
-        props.dispatch(addPostAC())
-    }
-    const onPostChange = (text: string) => {
-            props.dispatch(updateNewPostTextAC(text))
-        }
+                                                     removePost={props.removePost}/>)
+    const addPost = () => props.addPost()
+    const onPostChange = (text: string) => props.onPostChange(text)
 
-    let onTextClickHandler = () => props.dispatch(updateNewPostTextAC(''))
+    let onTextClickHandler = () => props.onTextClickHandler()
 
     return (
         <div className={s.myPosts}>
