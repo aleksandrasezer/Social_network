@@ -1,9 +1,10 @@
 import React from "react";
 import Dialogs from "./Dialogs";
 import {addMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
+import {StoreType} from "../../redux/redux-store";
 
 type DialogsContainerPropsType = {
-    store: any
+    store: StoreType
 }
 export function DialogsContainer(props: DialogsContainerPropsType) {
     // @ts-ignore

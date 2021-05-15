@@ -5,9 +5,10 @@ import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+import {StoreType} from "./redux/redux-store";
 
 type AppPropsType = {
-    store: any
+    store: StoreType
 }
 function App(props: AppPropsType) {
     return (
