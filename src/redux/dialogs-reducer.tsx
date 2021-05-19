@@ -22,9 +22,7 @@ let initialStore = {
 export const dialogsReducer = (state: DialogsPageType = initialStore, action: ActionTypes) => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':
-            state.newMessageBody = action.newMessageText
-            console.log('message is changing..')
-            return state
+            return {...state, newMessageBody: action.newMessageText}
         case 'ADD-MESSAGE':
             const newMessage: MessageType = {
                 id: v1(),
@@ -32,7 +30,7 @@ export const dialogsReducer = (state: DialogsPageType = initialStore, action: Ac
             }
             state.messages.push(newMessage)
             state.newMessageBody = ''
-            return state
+            return {...state}
         default:
             return state
     }

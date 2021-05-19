@@ -15,9 +15,7 @@ let initialState = {
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'REMOVE-POST':
-            state.posts = state.posts.filter(p => p.id !== action.id)
-            console.log('removing post..')
-            return state
+            return {...state,posts: state.posts.filter(p => p.id !== action.id)}
         case 'ADD-POST':
             let newPost: PostType = {
                 id: v1(),
@@ -26,11 +24,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
             }
             state.posts.unshift(newPost)
             state.newPostText = ''
-            return state
+            return {...state}
         case 'UPDATE-NEW-POST-TEXT':
-            state.newPostText = action.newText
-            console.log('post is changing..')
-            return state
+            return {...state,newPostText: action.newText}
         default: return state
     }
 }

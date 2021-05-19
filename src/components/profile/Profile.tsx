@@ -2,13 +2,8 @@ import React from "react";
 import s from "./Profile.module.css"
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {StoreType} from "../../redux/redux-store";
 
-type ProfilePropsType = {
-    store: StoreType
-}
-
-function Profile(props: ProfilePropsType) {
+function Profile() {
     return (
         <div>
             <div className={s.profile}>
@@ -19,7 +14,7 @@ function Profile(props: ProfilePropsType) {
                     aboutMe="Assigned cool at birth"/>
             </div>
             <div>
-                <MyPostsContainer store={props.store} />
+                <MyPostsContainer />
             </div>
         </div>
     )

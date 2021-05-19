@@ -1,28 +1,21 @@
-import React from "react";
 import {addPostAC, removePostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
+import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
-import {StoreType} from "../../../redux/redux-store";
+import {AppDispatch, RootState} from "../../../redux/redux-store";
 
-type MyPostsPropsType = {
-    store: StoreType
+let mapStateToProps = (state: RootState) => {
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
+    }
+}
+let mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+        removePost: (id: string) => dispatch(removePostAC(id)),
+        addPost: () => dispatch(addPostAC()),
+        onPostChange: (text: string) => dispatch(updateNewPostTextAC(text)),
+        onTextClickHandler: () => dispatch(updateNewPostTextAC(''))
+    }
 }
 
-export function MyPostsContainer(props: MyPostsPropsType) {
-
-    let state = props.store.getState()
-
-    const removePost = (id: string) => props.store.dispatch(removePostAC(id))
-
-    const addPost = () => props.store.dispatch(addPostAC())
-    const onPostChange = (text: string) => props.store.dispatch(updateNewPostTextAC(text))
-
-    const onTextClickHandler = () => props.store.dispatch(updateNewPostTextAC(''))
-
-    return <MyPosts posts={state.profilePage.posts}
-                    newPostText={state.profilePage.newPostText}
-                    addPost={addPost}
-                    onPostChange={onPostChange}
-                    onTextClickHandler={onTextClickHandler}
-                    removePost={removePost}/>
-
-}
+export const MyPostsContainer = connect(mapStateToProps,mapDispatchToProps)(MyPosts)
