@@ -10,6 +10,9 @@ function Navbar() {
         <div className={s.item}>
             <NavLink activeClassName={s.activeLink} to="/dialogs">Messages</NavLink>
         </div>
+        <div className={s.item}>
+            <NavLink activeClassName={s.activeLink} to='/users'>Users</NavLink>
+        </div>
         <div className={s.item}><a href="/feed">News</a></div>
         <div className={s.item}><a href="/music">Music</a></div>
         <div className={s.item}><a href="/settings">Settings</a></div>

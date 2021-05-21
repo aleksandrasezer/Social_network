@@ -1,7 +1,11 @@
-import {ActionTypes, PostType} from "./store";
 import {v1} from "uuid";
+import {PostType} from "./store";
 
 type ProfilePageType = { posts: PostType[], newPostText: string }
+
+type ActionTypes = ReturnType<typeof addPostAC> |
+    ReturnType<typeof updateNewPostTextAC> |
+    ReturnType<typeof removePostAC>
 
 let initialState = {
     posts: [
@@ -15,19 +19,16 @@ let initialState = {
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'REMOVE-POST':
-            return {...state,posts: state.posts.filter(p => p.id !== action.id)}
+            return {...state,posts: [...state.posts].filter(p => p.id !== action.id)}
         case 'ADD-POST':
-            let newPost: PostType = {
-                id: v1(),
-                postText: state.newPostText,
-                likesCount: 0
+            return {
+                ...state,
+                posts: [{id: v1(), postText: state.newPostText, likesCount: 0},...state.posts],
+                newPostText: ''
             }
-            state.posts.unshift(newPost)
-            state.newPostText = ''
-            return {...state}
         case 'UPDATE-NEW-POST-TEXT':
             return {...state,newPostText: action.newText}
-        default: return state
+        default: return {...state}
     }
 }
 export const addPostAC = () => {

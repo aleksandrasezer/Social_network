@@ -22,7 +22,7 @@ function Messages(props: MessagesPropsType) {
 
     let onTextClickHandler = () => props.onTextClickHandler()
 
-    let messagesItems = props.messages.map((el) => <Message id={el.id} message={el.messageText}/>)
+    let messagesItems = props.messages.map((el) => <Message key={el.id} id={el.id} message={el.messageText}/>)
     console.log(props.messages)
 
     return (

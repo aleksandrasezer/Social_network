@@ -1,11 +1,13 @@
-import {ActionTypes, DialogType, MessageType} from "./store";
 import {v1} from "uuid";
+import {DialogType, MessageType} from "./store";
 
 type DialogsPageType = {
     messages: MessageType[]
     dialogs: DialogType[]
     newMessageBody: string
 }
+
+type ActionTypes = ReturnType<typeof updateNewMessageBodyAC> | ReturnType<typeof addMessageAC>
 
 let initialStore = {
     messages: [{id: v1(), messageText: "Hi, how are you?"},
@@ -24,15 +26,13 @@ export const dialogsReducer = (state: DialogsPageType = initialStore, action: Ac
         case 'UPDATE-NEW-MESSAGE-BODY':
             return {...state, newMessageBody: action.newMessageText}
         case 'ADD-MESSAGE':
-            const newMessage: MessageType = {
-                id: v1(),
-                messageText: state.newMessageBody
+            return {
+                ...state,
+                messages: [...state.messages, {id: v1(), messageText: state.newMessageBody}],
+                newMessageBody: ''
             }
-            state.messages.push(newMessage)
-            state.newMessageBody = ''
-            return {...state}
         default:
-            return state
+            return {...state}
     }
 }
 

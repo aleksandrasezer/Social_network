@@ -15,7 +15,8 @@ type MyPostsPropsType = {
 }
 
 function MyPosts(props: MyPostsPropsType) {
-    let myPostsItems = props.posts.map((el) => <Post id={el.id}
+    let myPostsItems = props.posts.map((el) => <Post key={el.id}
+                                                     id={el.id}
                                                      postText={el.postText}
                                                      likesCount={el.likesCount}
                                                      removePost={props.removePost}/>)

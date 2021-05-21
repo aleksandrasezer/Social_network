@@ -1,0 +1,24 @@
+.profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+}
+.infoContainer {
+    border: 1px solid lightpink;
+    border-radius: 15px;
+    padding: 25px;
+}
+.userBody {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+    padding: 15px;
+}
+.avatarAndFollow {
+    text-align: center;
+}
+.nameSurname {
+    float: left;
+}
+.cityCountry {
+    float: right;
+}
