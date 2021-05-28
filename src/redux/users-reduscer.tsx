@@ -3,7 +3,16 @@ let initialState: UsersPageType = {
     users: []
 }
 
-export type UsersType = {id: string, profileURL: string, followed: boolean, name: string, surName: string, city: string, country: string}[]
+export type UsersType = {
+    name: string,
+    id: number,
+    uniqueUrlName: null,
+    photos: {
+        small: null,
+        large: null
+    },
+    status: null,
+    followed: boolean}[]
 
 export type UsersPageType = {
     users: UsersType
@@ -20,6 +29,6 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
     }
 }
 
-export const FollowAC = (id: string) => ({type: 'FOLLOW', id}) as const
-export const UnfollowAC = (id: string) => ({type: 'UNFOLLOW', id}) as const
+export const FollowAC = (id: number) => ({type: 'FOLLOW', id}) as const
+export const UnfollowAC = (id: number) => ({type: 'UNFOLLOW', id}) as const
 export const SetUsersAC = (users: UsersType) => ({type: 'SET-USERS', users}) as const
