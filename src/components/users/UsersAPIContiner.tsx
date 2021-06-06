@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import {UsersType} from "../../redux/users-reduscer";
 import {Users} from "./Users";
-import s from './Users.module.css'
+import {Preload} from "../common/preload/Preload";
 
 type UsersAPIContainerPropsType = {
     users: UsersType
@@ -46,9 +46,7 @@ export class UsersAPIContiner extends React.Component<UsersAPIContainerPropsType
 
         return <>
 
-            {this.props.isFetching && <div className={s.ldsCircle}>
-                <div></div>
-            </div>}
+            {this.props.isFetching && <Preload />}
 
             <Users users={this.props.users}
                    pages={pages}
