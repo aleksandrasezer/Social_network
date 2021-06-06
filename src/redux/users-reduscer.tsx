@@ -33,9 +33,9 @@ export type UsersPageType = {
     isFetching: boolean
 }
 
-type ActionsType = ReturnType<typeof followAC> | ReturnType<typeof unfollowAC> |
-    ReturnType<typeof setUsersAC> | ReturnType<typeof setCurrentPageAC> |
-    ReturnType<typeof setTotalUsersCountAC> |ReturnType<typeof setIsFetchingAC>
+type ActionsType = ReturnType<typeof follow> | ReturnType<typeof unfollow> |
+    ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
+    ReturnType<typeof setTotalUsersCount> |ReturnType<typeof setIsFetching>
 
 export const usersReducer = (state: UsersPageType = initialState, action: ActionsType) => {
     switch (action.type) {
@@ -49,9 +49,9 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
     }
 }
 
-export const followAC = (id: number) => ({type: FOLLOW, id}) as const
-export const unfollowAC = (id: number) => ({type: UNFOLLOW, id}) as const
-export const setUsersAC = (users: UsersType) => ({type: SET_USERS, users}) as const
-export const setCurrentPageAC = (pageNumber: number) => ({type: SET_CURRENT_PAGE, pageNumber}) as const
-export const setTotalUsersCountAC = (totalUsers: number) => ({type: SET_TOTAL_USERS_COUNT, totalUsers}) as const
-export const setIsFetchingAC = (isFetching: boolean) => ({type: SET_IS_FETCHING, isFetching}) as const
+export const follow = (id: number) => ({type: FOLLOW, id}) as const
+export const unfollow = (id: number) => ({type: UNFOLLOW, id}) as const
+export const setUsers = (users: UsersType) => ({type: SET_USERS, users}) as const
+export const setCurrentPage = (pageNumber: number) => ({type: SET_CURRENT_PAGE, pageNumber}) as const
+export const setTotalUsersCount = (totalUsers: number) => ({type: SET_TOTAL_USERS_COUNT, totalUsers}) as const
+export const setIsFetching = (isFetching: boolean) => ({type: SET_IS_FETCHING, isFetching}) as const
