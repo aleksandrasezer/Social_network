@@ -1,49 +1,47 @@
-import React from "react";
-import s from './Users.module.css'
+import s from "./Users.module.css";
+import userPhoto from "../../assets/images/bryan_avatar.jpg";
 import {Button} from "../Button/Button";
-import axios from "axios";
-import userPhoto from '../../assets/images/bryan_avatar.jpg'
+import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 
 type UsersPropsType = {
     users: UsersType
+    pages: number[]
+    currentPage: number
+    onPageChanged: (p: number) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
-    setUsers: (users: UsersType) => void
 }
 
-export class Users extends React.Component<UsersPropsType> {
+export const Users = (props: UsersPropsType) => {
+    return <div>
 
-    componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            this.props.setUsers(response.data.items)
-        })
-    }
+        {props.pages.map(p => {
+            return <span className={props.currentPage === p ? s.selectedPage : ''}
+                         onClick={() => props.onPageChanged(p)}>{p}</span>
+        })}
 
-    render() {
-        return <div>
-            {this.props.users.map(u =>
-                <div key={u.id} className={s.userBody}>
-                    <div className={s.avatarAndFollow}>
+        {props.users.map(u =>
+            <div key={u.id} className={s.userBody}>
+                <div className={s.avatarAndFollow}>
 
-                        <div>
-                            <img src={u.photos.small || userPhoto}
-                                 className={s.profilePic}
-                                 alt='avatar'/>
-                        </div>
-
-                        <div>
-                            {u.followed
-                                ? <Button onClick={() => this.props.unfollow(u.id)}>Unfollow</Button>
-                                : <Button onClick={() => this.props.follow(u.id)}>Follow</Button>}
-                        </div>
+                    <div>
+                        <img src={u.photos.small || userPhoto}
+                             className={s.profilePic}
+                             alt='avatar'/>
                     </div>
-                    <div className={s.infoContainer}>
-                        <span className={s.nameSurname}>{u.name} {"u.surName[0]"}.</span>
 
-                        <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
+                    <div>
+                        {u.followed
+                            ? <Button onClick={() => props.unfollow(u.id)}>Unfollow</Button>
+                            : <Button onClick={() => props.follow(u.id)}>Follow</Button>}
                     </div>
-                </div>)}
-        </div>
-    }
+                </div>
+                <div className={s.infoContainer}>
+                    <span className={s.nameSurname}>{u.name} {"u.surName[0]"}.</span>
+
+                    <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
+                </div>
+            </div>)}
+    </div>
 }
