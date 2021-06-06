@@ -1,27 +1,29 @@
 import React from "react";
 import s from "./ProfileInfo.module.css"
+import {Preload} from "../../common/preload/Preload";
 
 type ProfileInfoPropsType = {
-    img: string
-    name: string
-    age: number
-    aboutMe: string
+    profile: any
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
-    return (
-        <div>
-            <div>
-                <img src={props.img} alt='my_profile_avatar'/>
-            </div>
-            <div className={s.profileInfo}>
-                {props.name} <br/>
-                {props.age} y.o.<br/>
-                {props.aboutMe}
-            </div>
 
-        </div>
-    )
+    return <>
+
+        {!props.profile
+            ? <Preload/>
+
+            : <div>
+                <div>
+                    <img src={props.profile.photos.large} alt='profile_avatar'/>
+                </div>
+                <div className={s.profileInfo}>
+                    {props.profile.fullName} <br/>
+                    {props.profile.lookingForAJobDescription}
+                </div>
+            </div>
+        }
+    </>
 
 }
 

@@ -18,7 +18,7 @@ type UsersAPIContainerPropsType = {
     setIsFetching: (isFetching: boolean) => void
 }
 
-export class UsersAPIContiner extends React.Component<UsersAPIContainerPropsType> {
+export class UsersAPIContainer extends React.Component<UsersAPIContainerPropsType> {
 
     componentDidMount() {
         this.props.setIsFetching(true)

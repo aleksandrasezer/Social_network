@@ -3,6 +3,7 @@ import userPhoto from "../../assets/images/bryan_avatar.jpg";
 import {Button} from "../Button/Button";
 import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
+import {NavLink} from "react-router-dom";
 
 type UsersPropsType = {
     users: UsersType
@@ -26,9 +27,11 @@ export const Users = (props: UsersPropsType) => {
                 <div className={s.avatarAndFollow}>
 
                     <div>
+                        <NavLink to='/profile/2'>
                         <img src={u.photos.small || userPhoto}
                              className={s.profilePic}
                              alt='avatar'/>
+                        </NavLink>
                     </div>
 
                     <div>
