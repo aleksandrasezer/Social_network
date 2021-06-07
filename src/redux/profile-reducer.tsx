@@ -3,10 +3,10 @@ import {v1} from "uuid";
 const REMOVE_POST = 'REMOVE_POST'
 const ADD_POST = 'ADD_POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
-const SET_PROFILE = 'SET_PROFILE'
+const SET_USERS_PROFILE = 'SET_PROFILE'
 
 type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> |
-    ReturnType<typeof removePostAC> | ReturnType<typeof setProfile>
+    ReturnType<typeof removePostAC> | ReturnType<typeof setUsersProfile>
 
 let initialState = {
     posts: [
@@ -17,23 +17,50 @@ let initialState = {
     newPostText: 'write something..',
     profile: null,
 }
+
+export type ProfileType = {
+    aboutMe: string
+    contacts:
+        {
+            github: string
+            vk: string
+            facebook: string
+            instagram: string
+            twitter: string
+            website: string
+            youtube: string
+            mainLink: string
+        }
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: { small: string, large: string }
+    userId: number
+} | null
+
 type InitialStateType = typeof initialState
 
 export const profileReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case REMOVE_POST:
-            return {...state,posts: [...state.posts].filter(p => p.id !== action.id)}
-        case ADD_POST:
+            return {
+                ...state, posts: [...state.posts].filter(p => p.id !== action.id)
+            }
+        case
+        ADD_POST:
             return {
                 ...state,
-                posts: [{id: v1(), postText: state.newPostText, likesCount: 0},...state.posts],
+                posts: [{id: v1(), postText: state.newPostText, likesCount: 0}, ...state.posts],
                 newPostText: ''
             }
-        case UPDATE_NEW_POST_TEXT:
-            return {...state,newPostText: action.newText}
-        case SET_PROFILE:
-            return {...state,profile: action.profile}
-        default: return {...state}
+        case
+        UPDATE_NEW_POST_TEXT:
+            return {...state, newPostText: action.newText}
+        case
+        SET_USERS_PROFILE:
+            return {...state, profile: action.profile}
+        default:
+            return {...state}
     }
 }
 export const addPostAC = () => {
@@ -51,9 +78,9 @@ export const removePostAC = (id: string) => {
         id: id
     } as const
 }
-export const setProfile = (profile: any) => {
+export const setUsersProfile = (profile: any) => {
     return {
-        type: SET_PROFILE,
+        type: SET_USERS_PROFILE,
         profile
     } as const
 }

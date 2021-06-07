@@ -27,7 +27,7 @@ export const Users = (props: UsersPropsType) => {
                 <div className={s.avatarAndFollow}>
 
                     <div>
-                        <NavLink to='/profile/2'>
+                        <NavLink to={`/profile/${u.id}`}>
                         <img src={u.photos.small || userPhoto}
                              className={s.profilePic}
                              alt='avatar'/>
@@ -41,7 +41,7 @@ export const Users = (props: UsersPropsType) => {
                     </div>
                 </div>
                 <div className={s.infoContainer}>
-                    <span className={s.nameSurname}>{u.name} {"u.surName[0]"}.</span>
+                    <span className={s.nameSurname}>{u.name}</span>
 
                     <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
                 </div>
