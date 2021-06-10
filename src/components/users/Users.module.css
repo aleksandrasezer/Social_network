@@ -28,3 +28,7 @@
 .selectedPage {
     font-weight: bold;
 }
+.pageNumbers {
+    max-width: 1100px;
+    text-align: center;
+}

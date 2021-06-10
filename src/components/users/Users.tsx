@@ -17,10 +17,12 @@ type UsersPropsType = {
 export const Users = (props: UsersPropsType) => {
     return <div>
 
-        {props.pages.map(p => {
-            return <span className={props.currentPage === p ? s.selectedPage : ''}
-                         onClick={() => props.onPageChanged(p)}>{p}</span>
-        })}
+        <div className={s.pageNumbers}>
+            {props.pages.map(p => {
+                return <span className={props.currentPage === p ? s.selectedPage : ''}
+                             onClick={() => props.onPageChanged(p)}> {p} </span>
+            })}
+        </div>
 
         {props.users.map(u =>
             <div key={u.id} className={s.userBody}>
@@ -28,9 +30,9 @@ export const Users = (props: UsersPropsType) => {
 
                     <div>
                         <NavLink to={`/profile/${u.id}`}>
-                        <img src={u.photos.small || userPhoto}
-                             className={s.profilePic}
-                             alt='avatar'/>
+                            <img src={u.photos.small || userPhoto}
+                                 className={s.profilePic}
+                                 alt='avatar'/>
                         </NavLink>
                     </div>
 
