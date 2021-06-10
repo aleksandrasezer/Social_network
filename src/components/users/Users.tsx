@@ -4,6 +4,7 @@ import {Button} from "../Button/Button";
 import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 type UsersPropsType = {
     users: UsersType
@@ -38,15 +39,40 @@ export const Users = (props: UsersPropsType) => {
 
                     <div>
                         {u.followed
-                            ? <Button onClick={() => props.unfollow(u.id)}>Unfollow</Button>
-                            : <Button onClick={() => props.follow(u.id)}>Follow</Button>}
-                    </div>
-                </div>
-                <div className={s.infoContainer}>
-                    <span className={s.nameSurname}>{u.name}</span>
+                            ? <Button
+                                onClick={() => {
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "fd7ee122-ff59-4cee-b5b0-6226ee5b433c",
+                                        },
+                                    })
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                        })
+                                }}>Unfollow</Button>
+                            : <Button onClick={() => {
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                    withCredentials: true,
+                                    headers: {
+                                        "API-KEY": "fd7ee122-ff59-4cee-b5b0-6226ee5b433c",
+                                    },
+                                })
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.follow(u.id)
+                                        }
+                                    })
+                            }}>Follow</Button>}
+                                </div>
+                                </div>
+                                <div className={s.infoContainer}>
+                                <span className={s.nameSurname}>{u.name}</span>
 
-                    <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
-                </div>
-            </div>)}
-    </div>
-}
+                                <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
+                                </div>
+                                </div>)}
+                                </div>
+                                }
