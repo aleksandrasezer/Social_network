@@ -33,7 +33,8 @@ function MyPosts(props: MyPostsPropsType) {
                     <ControlledTextarea onPostChange={onPostChange}
                                         value={props.newPostText}
                                         onTextClick={onTextClickHandler}/>
-                    <Button onClick={addPost}>Add post</Button>
+                    <Button onClick={addPost}
+                            disabled={false}>Add post</Button>
                 </div>
             </div>
             <div>

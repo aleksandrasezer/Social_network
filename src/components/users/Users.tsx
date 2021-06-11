@@ -10,9 +10,13 @@ type UsersPropsType = {
     users: UsersType
     pages: number[]
     currentPage: number
+    followingInProgress: number[]
+    isFetching: boolean
+    setIsFetching: (isFetching: boolean) => void
     onPageChanged: (p: number) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
+    setFollowingProgress: (inProgress: boolean, userId: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -20,7 +24,7 @@ export const Users = (props: UsersPropsType) => {
 
         <div className={s.pageNumbers}>
             {props.pages.map(p => {
-                return <span className={props.currentPage === p ? s.selectedPage : ''}
+                return <span key={p} className={props.currentPage === p ? s.selectedPage : ''}
                              onClick={() => props.onPageChanged(p)}> {p} </span>
             })}
         </div>
@@ -40,20 +44,34 @@ export const Users = (props: UsersPropsType) => {
                     <div>
                         {u.followed
                             ? <Button
+                                disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => {
+                                    props.setIsFetching(true)
+                                    props.setFollowingProgress(true, u.id)
                                     followAPI.unfollowUser(u.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.unfollow(u.id)
                                         }
+                                        props.setFollowingProgress(false, u.id)
+                                        props.setIsFetching(false)
                                     })
+
+
                                 }}>Unfollow</Button>
                             : <Button
+                                disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => {
+                                    props.setIsFetching(true)
+                                    props.setFollowingProgress(true, u.id)
                                     followAPI.followUser(u.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.follow(u.id)
                                         }
+                                        props.setFollowingProgress(false, u.id)
+                                        props.setIsFetching(false)
                                     })
+
+
                                 }}>Follow</Button>}
                     </div>
                 </div>

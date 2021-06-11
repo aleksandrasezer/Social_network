@@ -10,12 +10,14 @@ type UsersAPIContainerPropsType = {
     totalUsersCount: number
     pageSize: number
     isFetching: boolean
+    followingInProgress: number[]
     follow: (id: number) => void
     unfollow: (id: number) => void
     setUsers: (users: UsersType) => void
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalUsers: number) => void
     setIsFetching: (isFetching: boolean) => void
+    setFollowingProgress: (inProgress: boolean, userId: number) => void
 }
 
 export class UsersAPIContainer extends React.Component<UsersAPIContainerPropsType> {
@@ -53,7 +55,12 @@ export class UsersAPIContainer extends React.Component<UsersAPIContainerPropsTyp
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
                    follow={this.props.follow}
-                   unfollow={this.props.unfollow}/>
+                   unfollow={this.props.unfollow}
+                   followingInProgress={this.props.followingInProgress}
+                   setFollowingProgress={this.props.setFollowingProgress}
+                   isFetching={this.props.isFetching}
+                   setIsFetching={this.props.setIsFetching}
+                   />
         </>
     }
 }

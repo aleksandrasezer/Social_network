@@ -22,7 +22,8 @@ function Post(props: PostPropsType) {
             </div>
             <div className={s.likeArea}>
                 <span>likesCount = {props.likesCount}</span>
-                <Button onClick={() => props.removePost(props.id)}> Remove </Button>
+                <Button onClick={() => props.removePost(props.id)}
+                        disabled={false}> Remove </Button>
             </div>
         </div>
     )

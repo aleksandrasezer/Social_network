@@ -37,7 +37,8 @@ function Messages(props: MessagesPropsType) {
                                         onTextClick={onTextClickHandler} />
                 </div>
                 <div>
-                    <Button onClick={addNewMessage}> Send
+                    <Button onClick={addNewMessage}
+                            disabled={false}> Send
                     </Button>
                 </div>
             </div>
