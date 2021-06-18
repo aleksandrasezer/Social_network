@@ -4,7 +4,7 @@ import {Button} from "../Button/Button";
 import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
+import {followAPI} from "../../dal/api";
 
 type UsersPropsType = {
     users: UsersType

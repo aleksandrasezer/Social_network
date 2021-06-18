@@ -2,7 +2,7 @@ import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 import {Users} from "./Users";
 import {Preload} from "../common/preload/Preload";
-import {usersAPI} from "../../api/api";
+import {usersAPI} from "../../dal/api";
 
 type UsersAPIContainerPropsType = {
     users: UsersType

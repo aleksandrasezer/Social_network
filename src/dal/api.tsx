@@ -10,6 +10,14 @@ const instance = axios.create(
     })
 
 
+
+export const profileAPI = {
+    detUserProfile(userId: string) {
+        return instance.get(`profile/${userId}`)
+            .then(response => response.data)
+    }
+}
+
 export const usersAPI = {
     getUsers(currentPage: number, pageSize: number) {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`)

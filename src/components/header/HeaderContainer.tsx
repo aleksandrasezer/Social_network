@@ -3,7 +3,7 @@ import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {InitStateType, setAuthUserLogin} from "../../redux/auth-reducer";
 import Header from "./Header";
-import {authAPI} from "../../api/api";
+import {authAPI} from "../../dal/api";
 
 type HeaderApiContPropsType = {
     data: InitStateType
