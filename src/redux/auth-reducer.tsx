@@ -1,3 +1,6 @@
+import {Dispatch} from "redux";
+import {authAPI} from "../dal/api";
+
 const SET_USER_DATA = 'SET_USER_DATA'
 
 export type InitStateType = {
@@ -26,9 +29,20 @@ export const authReducer = (state: InitStateType = initState, action: ActionType
     }
 }
 
-export const setAuthUserLogin = (userId: number, login: string, email: string) => {
+const setAuthUserLogin = (userId: number, login: string, email: string) => {
     return {
         type: SET_USER_DATA,
         data: {userId, login, email}
     } as const
+}
+
+export const setAuthLogin = () => {
+    return (dispatch: Dispatch) => {
+        authAPI.getAuthUserData().then(data => {
+            if (data.resultCode === 0 ) {
+                const {id,login,email} = data.data
+                dispatch(setAuthUserLogin(id,login,email))
+            }
+        })
+    }
 }

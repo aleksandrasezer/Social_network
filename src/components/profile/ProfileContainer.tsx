@@ -1,14 +1,13 @@
 import React from "react";
 import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {ProfileType, setUsersProfile} from "../../redux/profile-reducer";
+import {ProfileType, setUserProfileInfo} from "../../redux/profile-reducer";
 import Profile from "./Profile";
 import { withRouter } from "react-router"
-import {profileAPI} from "../../dal/api";
 
 type ProfileAPIContainerPropsType = {
     profile: ProfileType
-    setUsersProfile: (profile: ProfileType) => void
+    setUserProfileInfo: (userId: string) => void
     history: any
     location: any
     match: any
@@ -20,9 +19,7 @@ class ProfileAPIContainer extends React.Component<ProfileAPIContainerPropsType> 
 
     componentDidMount() {
         let userId = this.props.match.params.userId || 2
-        profileAPI.detUserProfile(userId).then(data => {
-            this.props.setUsersProfile(data)
-        })
+        this.props.setUserProfileInfo(userId)
     }
 
     render() {
@@ -39,4 +36,4 @@ let mapStateToProps = (state: RootState) => {
     }
 }
 
-export const ProfileContainer = connect(mapStateToProps, {setUsersProfile})(withRouter(ProfileAPIContainer))
+export const ProfileContainer = connect(mapStateToProps, {setUserProfileInfo})(withRouter(ProfileAPIContainer))

@@ -4,7 +4,6 @@ import {Button} from "../Button/Button";
 import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../dal/api";
 
 type UsersPropsType = {
     users: UsersType
@@ -12,11 +11,9 @@ type UsersPropsType = {
     currentPage: number
     followingInProgress: number[]
     isFetching: boolean
-    setIsFetching: (isFetching: boolean) => void
     onPageChanged: (p: number) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
-    setFollowingProgress: (inProgress: boolean, userId: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -45,34 +42,10 @@ export const Users = (props: UsersPropsType) => {
                         {u.followed
                             ? <Button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    props.setIsFetching(true)
-                                    props.setFollowingProgress(true, u.id)
-                                    followAPI.unfollowUser(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                        props.setFollowingProgress(false, u.id)
-                                        props.setIsFetching(false)
-                                    })
-
-
-                                }}>Unfollow</Button>
+                                onClick={() => { props.unfollow(u.id) }}>Unfollow</Button>
                             : <Button
                                 disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    props.setIsFetching(true)
-                                    props.setFollowingProgress(true, u.id)
-                                    followAPI.followUser(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.follow(u.id)
-                                        }
-                                        props.setFollowingProgress(false, u.id)
-                                        props.setIsFetching(false)
-                                    })
-
-
-                                }}>Follow</Button>}
+                                onClick={() => { props.follow(u.id) }}>Follow</Button>}
                     </div>
                 </div>
                 <div className={s.infoContainer}>

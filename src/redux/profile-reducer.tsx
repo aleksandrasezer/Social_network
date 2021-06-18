@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {profileAPI} from "../dal/api";
 
 const REMOVE_POST = 'REMOVE_POST'
 const ADD_POST = 'ADD_POST'
@@ -78,9 +80,17 @@ export const removePostAC = (id: string) => {
         id: id
     } as const
 }
-export const setUsersProfile = (profile: any) => {
+const setUsersProfile = (profile: any) => {
     return {
         type: SET_USERS_PROFILE,
         profile
     } as const
+}
+
+export const setUserProfileInfo = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        profileAPI.detUserProfile(userId).then(data => {
+            dispatch(setUsersProfile(data))
+        })
+    }
 }
