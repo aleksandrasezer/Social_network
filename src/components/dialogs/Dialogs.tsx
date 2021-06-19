@@ -3,6 +3,7 @@ import s from "./Dialogs.module.css"
 import Messages from "./messages/Messages";
 import Dialog from "./Dialog/Dialog";
 import {DialogType, MessageType} from "../../redux/store";
+import {Redirect} from "react-router-dom"
 
 type DialogsPropsType = {
     messages: MessageType[]
@@ -11,11 +12,16 @@ type DialogsPropsType = {
     addNewMessage: () => void
     onMessageChangeHandler: (text: string) => void
     onTextClickHandler: () => void
+    isAuth: boolean
 }
 function Dialogs(props: DialogsPropsType) {
 
     let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name} />)
+
+    if (!props.isAuth) return <Redirect to={'/login'} />
+
     return (
+
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 { dialogsItems }

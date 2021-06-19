@@ -2,6 +2,7 @@ import React from "react";
 import {UsersType} from "../../redux/users-reduscer";
 import {Users} from "./Users";
 import {Preload} from "../common/preload/Preload";
+import {Redirect} from "react-router-dom";
 
 type UsersAPIContainerPropsType = {
     users: UsersType
@@ -14,6 +15,7 @@ type UsersAPIContainerPropsType = {
     unfollowUser: (id: number) => void
     setCurrentPage: (pageNumber: number) => void
     setUsersFromServer: (currentPage: number, pageSize: number) => void
+    isAuth: boolean
 }
 
 export class UsersAPIContainer extends React.Component<UsersAPIContainerPropsType> {
@@ -28,6 +30,8 @@ export class UsersAPIContainer extends React.Component<UsersAPIContainerPropsTyp
     }
 
     render() {
+
+        if (!this.props.isAuth) return <Redirect to={'/login'} />
 
         let pages = []
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)

@@ -15,6 +15,7 @@ let mapStateToProps = (state: RootState) => {
         pageSize: state.usersPage.pageSize,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth,
     }
 }
 
