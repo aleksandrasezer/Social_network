@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css"
 import {Preload} from "../../common/preload/Preload";
 import {ProfileType} from "../../../redux/profile-reducer";
 import avatar from '../../../assets/images/bryan_avatar.jpg'
+import {ProfileStatus} from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: ProfileType
@@ -23,6 +24,9 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                     {props.profile.fullName} <br/>
                     {props.profile.aboutMe}
                 </div>
+
+                <ProfileStatus />
+
             </div>
         }
     </>
