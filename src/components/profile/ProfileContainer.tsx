@@ -3,32 +3,34 @@ import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {ProfileType, setUserProfileInfo} from "../../redux/profile-reducer";
 import Profile from "./Profile";
-import { withRouter } from "react-router"
-import {Redirect} from "react-router-dom";
+import {RouteComponentProps, withRouter } from "react-router"
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-type ProfileAPIContainerPropsType = {
-    profile: ProfileType
-    setUserProfileInfo: (userId: string) => void
-    history: any
-    location: any
-    match: any
-    staticContext: any
-    isAuth: boolean
+type PathParamsType = {
+    userId: string
 }
 
+type mapStateToPropsType = {
+    profile: ProfileType
+}
+type mapDispatchToPropsType = {
+    setUserProfileInfo: (userId: string) => void
+}
+type ProfilePropsType = mapStateToPropsType & mapDispatchToPropsType
 
-class ProfileAPIContainer extends React.Component<ProfileAPIContainerPropsType> {
+type ProfileContainerPropsType = RouteComponentProps<PathParamsType> & ProfilePropsType
+
+
+class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
     componentDidMount() {
-        let userId = this.props.match.params.userId || 2
+        let userId = this.props.match.params.userId || '2'
         this.props.setUserProfileInfo(userId)
     }
 
     render() {
-
-        if (!this.props.isAuth) return <Redirect to={'/login'} />
-
-        return <Profile profile={this.props.profile}/>
+        return <Profile {...this.props} profile={this.props.profile}/>
     }
 }
 
@@ -38,8 +40,12 @@ class ProfileAPIContainer extends React.Component<ProfileAPIContainerPropsType> 
 let mapStateToProps = (state: RootState) => {
     return {
         profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth,
     }
 }
 
-export const ProfileContainer = connect(mapStateToProps, {setUserProfileInfo})(withRouter(ProfileAPIContainer))
+export default compose<React.ComponentType>(
+    withRouter,
+    connect(mapStateToProps, {setUserProfileInfo}),
+    withAuthRedirect,
+)(ProfileContainer)
+

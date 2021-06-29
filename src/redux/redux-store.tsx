@@ -5,14 +5,14 @@ import {usersReducer} from "./users-reduscer";
 import {authReducer} from "./auth-reducer";
 import thunk from "redux-thunk"
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer,
 })
 
-export let store = createStore(reducers, applyMiddleware(thunk))
+export let store = createStore(rootReducer, applyMiddleware(thunk))
 
 
 export type RootState = ReturnType<typeof store.getState>
