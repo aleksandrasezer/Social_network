@@ -7,6 +7,7 @@ import {ProfileStatus} from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: ProfileType
+    userStatus: string
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
@@ -20,12 +21,13 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                 <div>
                     <img src={props.profile.photos.large || avatar} alt='profile_avatar'/>
                 </div>
+
+                <ProfileStatus userStatus={props.userStatus}/>
+
                 <div className={s.profileInfo}>
                     {props.profile.fullName} <br/>
                     {props.profile.aboutMe}
                 </div>
-
-                <ProfileStatus />
 
             </div>
         }

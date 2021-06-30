@@ -1,17 +1,24 @@
 import React, {useState} from "react";
+import {profileAPI} from "../../../dal/api";
 
-export const ProfileStatus = () => {
+type ProfileStatusPropsType = {
+    userStatus: string
+}
+
+export const ProfileStatus = (props: ProfileStatusPropsType) => {
 
     const [editMode, setEditMode] = useState(false)
 
     const onEditMode = () => setEditMode(true)
     const offEditMode = () => setEditMode(false)
 
+    profileAPI.getUserStatus('2').then((response) => console.log(response))
+
     return (
         <div>
             {!editMode
                 ? <div>
-                    <span onDoubleClick={() => onEditMode()}>hello</span>
+                    <span onDoubleClick={() => onEditMode()}>{props.userStatus || '---'}</span>
                 </div>
 
                 : <div>

@@ -6,13 +6,15 @@ import {ProfileType} from "../../redux/profile-reducer";
 
 type ProfilePropsType = {
     profile: ProfileType
+    userStatus: string
 }
 
 function Profile(props: ProfilePropsType) {
     return (
         <div>
             <div className={s.profile}>
-                <ProfileInfo profile={props.profile}/>
+                <ProfileInfo profile={props.profile}
+                             userStatus={props.userStatus}/>
             </div>
             <div>
                 <MyPostsContainer />

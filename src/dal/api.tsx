@@ -12,9 +12,12 @@ const instance = axios.create(
 
 
 export const profileAPI = {
-    detUserProfile(userId: string) {
+    getUserProfile(userId: string) {
         return instance.get(`profile/${userId}`)
             .then(response => response.data)
+    },
+    getUserStatus(userId: string) {
+        return instance.get(`/profile/status/${userId}`)
     }
 }
 
