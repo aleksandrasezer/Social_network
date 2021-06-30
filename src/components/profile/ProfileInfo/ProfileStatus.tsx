@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {profileAPI} from "../../../dal/api";
 
 type ProfileStatusPropsType = {
@@ -7,6 +7,8 @@ type ProfileStatusPropsType = {
 }
 
 export const ProfileStatus = (props: ProfileStatusPropsType) => {
+
+
 
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.userStatus)
@@ -22,6 +24,12 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
     }
 
     profileAPI.getUserStatus('2').then((response) => console.log(response))
+
+    useEffect(() => {
+        if (status !== props.userStatus) {
+            setStatus(props.userStatus)
+        }
+    })
 
     return (
         <div>

@@ -5,7 +5,6 @@ import {ProfileType, setMyStatus, setUserProfileInfo, setUserStatus} from "../..
 import Profile from "./Profile";
 import {RouteComponentProps, withRouter } from "react-router"
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
     userId: string
@@ -57,6 +56,6 @@ let mapStateToProps = (state: RootState) => {
 export default compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {setUserProfileInfo, setUserStatus, setMyStatus}),
-    withAuthRedirect,
+//    withAuthRedirect,
 )(ProfileContainer)
 

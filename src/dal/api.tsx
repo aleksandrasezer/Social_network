@@ -20,9 +20,9 @@ export const profileAPI = {
         return instance.get(`/profile/status/${userId}`)
     },
     setMyStatus(newStatus: string) {
-        return instance.put('profile/status', {status: newStatus})
-    }
 
+        return instance.put('profile/status', {status: newStatus})
+    },
 }
 
 export const usersAPI = {
