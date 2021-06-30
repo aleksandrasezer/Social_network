@@ -117,3 +117,11 @@ export const setUserStatus = (userId: string) => (dispatch: Dispatch) => {
         }
     })
 }
+
+export const setMyStatus = (newStatus: string) => (dispatch: Dispatch) => {
+    return profileAPI.setMyStatus(newStatus).then((response) => {
+        if (response.status === 200) {
+            dispatch(setUsersStatus(newStatus))
+        }
+    })
+}
