@@ -25,11 +25,7 @@ export const ProfileStatus = (props: ProfileStatusPropsType) => {
 
     profileAPI.getUserStatus('2').then((response) => console.log(response))
 
-    useEffect(() => {
-        if (status !== props.userStatus) {
-            setStatus(props.userStatus)
-        }
-    })
+    useEffect(() => {setStatus(props.userStatus)}, [props.userStatus])
 
     return (
         <div>
