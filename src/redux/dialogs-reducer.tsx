@@ -7,7 +7,7 @@ type DialogsPageType = {
     newMessageBody: string
 }
 
-type ActionTypes = ReturnType<typeof updateNewMessageBodyAC> | ReturnType<typeof addMessageAC>
+type ActionTypes = ReturnType<typeof addMessageAC>
 
 let initialState = {
     messages: [{id: v1(), messageText: "Hi, how are you?"},
@@ -23,8 +23,6 @@ let initialState = {
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
     switch (action.type) {
-        case 'UPDATE-NEW-MESSAGE-BODY':
-            return {...state, newMessageBody: action.newMessageText}
         case 'ADD-MESSAGE':
             return {
                 ...state,
@@ -38,11 +36,4 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
 
 export const addMessageAC = () => {
     return {type: 'ADD-MESSAGE'} as const
-}
-
-export const updateNewMessageBodyAC = (text: string) => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE-BODY',
-        newMessageText: text
-    } as const
 }

@@ -1,4 +1,4 @@
-import {addPostAC, removePostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
+import {removePostAC} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
 import {AppDispatch, RootState} from "../../../redux/redux-store";
@@ -12,9 +12,6 @@ let mapStateToProps = (state: RootState) => {
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         removePost: (id: string) => dispatch(removePostAC(id)),
-        addPost: () => dispatch(addPostAC()),
-        onPostChange: (text: string) => dispatch(updateNewPostTextAC(text)),
-        onTextClickHandler: () => dispatch(updateNewPostTextAC(''))
     }
 }
 

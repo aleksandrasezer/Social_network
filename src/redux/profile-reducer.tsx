@@ -3,13 +3,11 @@ import {Dispatch} from "redux";
 import {profileAPI} from "../dal/api";
 
 const REMOVE_POST = 'REMOVE_POST'
-const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USERS_PROFILE = 'SET_PROFILE'
 const SET_USERS_STATUS = 'SET_USERS_STATUS'
 
-type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> |
-    ReturnType<typeof removePostAC> | ReturnType<typeof setUsersProfile> | ReturnType<typeof setUsersStatus>
+type ActionTypes = ReturnType<typeof removePostAC> | ReturnType<typeof setUsersProfile> |
+    ReturnType<typeof setUsersStatus>
 
 let initialState = {
     posts: [
@@ -51,16 +49,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
                 ...state, posts: [...state.posts].filter(p => p.id !== action.id)
             }
         case
-        ADD_POST:
-            return {
-                ...state,
-                posts: [{id: v1(), postText: state.newPostText, likesCount: 0}, ...state.posts],
-                newPostText: ''
-            }
-        case
-        UPDATE_NEW_POST_TEXT:
-            return {...state, newPostText: action.newText}
-        case
         SET_USERS_PROFILE:
             return {...state, profile: action.profile}
         case
@@ -73,15 +61,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
 
 //action-creators
 
-export const addPostAC = () => {
-    return {type: ADD_POST} as const
-}
-export const updateNewPostTextAC = (text: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    } as const
-}
 export const removePostAC = (id: string) => {
     return {
         type: REMOVE_POST,
