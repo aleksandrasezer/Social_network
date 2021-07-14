@@ -1,13 +1,15 @@
-import React from "react"
+import React, {ButtonHTMLAttributes, DetailedHTMLProps} from "react"
 import s from './Button.module.css'
 
-type ButtonPropsTypes = {
+/*type ButtonPropsTypes = {
     onClick: () => void
     disabled: boolean
     children: string
-}
+}*/
 
-export function Button(props: ButtonPropsTypes) {
+type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+
+export function Button(props: DefaultButtonPropsType) {
     return (
         <>
         <button className={s.buttonStyle}

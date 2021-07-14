@@ -8,9 +8,6 @@ type DialogsPropsType = {
     messages: MessageType[]
     dialogs: DialogType[]
     newMessageText: string
-    addNewMessage: () => void
-    onMessageChangeHandler: (text: string) => void
-    onTextClickHandler: () => void
 }
 function Dialogs(props: DialogsPropsType) {
 
@@ -24,10 +21,7 @@ function Dialogs(props: DialogsPropsType) {
             </div>
             <div className={s.messages}>
                 <Messages   messages={props.messages}
-                          newMessageText={props.newMessageText}
-                          addNewMessage={props.addNewMessage}
-                          onMessageChangeHandler={props.onMessageChangeHandler}
-                          onTextClickHandler={props.onTextClickHandler}/>
+                          newMessageText={props.newMessageText} />
             </div>
         </div>
     )

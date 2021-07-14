@@ -9,7 +9,7 @@ type DialogsPageType = {
 
 type ActionTypes = ReturnType<typeof updateNewMessageBodyAC> | ReturnType<typeof addMessageAC>
 
-let initialStore = {
+let initialState = {
     messages: [{id: v1(), messageText: "Hi, how are you?"},
         {id: v1(), messageText: "Summer is coming!"},
         {id: v1(), messageText: "Yo"},
@@ -21,7 +21,7 @@ let initialStore = {
     newMessageBody: 'write something:)'
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialStore, action: ActionTypes) => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':
             return {...state, newMessageBody: action.newMessageText}
