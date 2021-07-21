@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
 import {BrowserRouter, Route} from "react-router-dom";
-import {HeaderContainer} from "./components/header/HeaderContainer";
-import {Login} from "./components/login/Login";
+import HeadApiContainer from "./components/header/HeaderContainer";
+import Login from "./components/login/Login";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import Dialogs from "./components/dialogs/DialogsContainer";
@@ -12,7 +12,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="app_wrapper">
-                <HeaderContainer/>
+                <HeadApiContainer/>
                 <Navbar/>
                 <div className="app_wrapper_content">
 

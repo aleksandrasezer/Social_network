@@ -1,22 +1,23 @@
 import React from "react";
 import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {InitStateType, setAuthLogin} from "../../redux/auth-reducer";
+import {InitStateType, logout, setAuthUserData} from "../../redux/auth-reducer";
 import Header from "./Header";
 
 type HeaderApiContPropsType = {
     data: InitStateType
-    setAuthLogin: () => void
+    setAuthUserData: () => void
+    logout: () => void
 }
 
 class HeadApiContainer extends React.Component<HeaderApiContPropsType> {
 
     componentDidMount() {
-        this.props.setAuthLogin()
+        this.props.setAuthUserData()
     }
 
     render() {
-        return <Header data={this.props.data}/>
+        return <Header data={this.props.data} logout={this.props.logout}/>
     }
 }
 
@@ -26,4 +27,4 @@ let mapStateToProps = (state: RootState) => {
     }
 }
 
-export const HeaderContainer = connect(mapStateToProps,{setAuthLogin})(HeadApiContainer)
+export default connect(mapStateToProps,{setAuthUserData, logout})(HeadApiContainer)

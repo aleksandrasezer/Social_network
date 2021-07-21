@@ -3,9 +3,13 @@ import {Field,InjectedFormProps, reduxForm} from "redux-form";
 import {Button} from "../Button/Button";
 import {maxLengthCreator, required} from "../../validators/validators";
 import {Input} from "../common/formControls/FormControls";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+import {Redirect} from "react-router-dom";
+import {RootState} from "../../redux/redux-store";
 
 type FormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
@@ -16,14 +20,15 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'login'}
-                       name={'login'}
+                <Field placeholder={'Email'}
+                       name={'email'}
                        component={Input}
                        validate={[required, maxLength25]}/>
             </div>
 
             <div>
-                <Field placeholder={'password'}
+                <Field placeholder={'Password'}
+                       type='password'
                        name={'password'}
                        component={Input}
                        validate={[required, maxLength25]}/>
@@ -45,10 +50,19 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
-export const Login = () => {
+type LoginPropsType = {
+    isAuth: boolean
+    login: (email: string, password: string, rememberMe: boolean) => void
+}
+
+const Login = (props: LoginPropsType) => {
 
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
     }
 
     return <div>
@@ -59,3 +73,10 @@ export const Login = () => {
     </div>
 }
 
+const mapStateToProps = (state: RootState) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+ export default connect(mapStateToProps, {login})(Login)
