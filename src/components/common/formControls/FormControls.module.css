@@ -11,3 +11,10 @@
 .errorTextfield input {
     border-color: red;
 }
+
+
+.loginFormError {
+    border: red 1px solid;
+    padding: 5px;
+    color: red;
+}
