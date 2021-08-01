@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Messages.module.css";
-import Message from "./Message";
+import Message from "./message/Message";
 import {MessageType} from "../../../redux/store";
 import {Button} from "../../Button/Button";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
