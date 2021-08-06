@@ -2,11 +2,11 @@ import s from "./Users.module.css";
 import userPhoto from "../../assets/images/bryan_avatar.jpg";
 import {Button} from "../Button/Button";
 import React from "react";
-import {UsersType} from "../../redux/users-reduscer";
 import {NavLink} from "react-router-dom";
+import {UserType} from "../../types/types";
 
 type UsersPropsType = {
-    users: UsersType
+    users: UserType[]
     pages: number[]
     currentPage: number
     followingInProgress: number[]

@@ -1,12 +1,12 @@
 import React from "react";
 import s from "./ProfileInfo.module.css"
 import {Preload} from "../../common/preload/Preload";
-import {ProfileType} from "../../../redux/profile-reducer";
 import avatar from '../../../assets/images/bryan_avatar.jpg'
 import {ProfileStatus} from "./ProfileStatus";
+import {ProfileType} from "../../../types/types";
 
 type ProfileInfoPropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
     userStatus: string
     setMyStatus: (newStatus: string) => void
 }

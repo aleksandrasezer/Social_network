@@ -1,10 +1,11 @@
 import React from "react";
 import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {ProfileType, setMyStatus, setUserProfileInfo, setUserStatus} from "../../redux/profile-reducer";
+import {setMyStatus, setUserProfileInfo, setUserStatus} from "../../redux/profile-reducer";
 import Profile from "./Profile";
 import {RouteComponentProps, withRouter } from "react-router"
 import {compose} from "redux";
+import {ProfileType} from "../../types/types";
 
 type PathParamsType = {
     userId: string

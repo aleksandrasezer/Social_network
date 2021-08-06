@@ -1,5 +1,5 @@
 import React from "react";
-import {followUser, setCurrentPage, setUsersFromServer, unfollowUser, UsersType} from "../../redux/users-reduscer";
+import {followUser, setCurrentPage, setUsersFromServer, unfollowUser} from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preload} from "../common/preload/Preload";
 import {RootState} from "../../redux/redux-store";
@@ -13,9 +13,10 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/users-selectors";
+import {UserType} from "../../types/types";
 
 type UsersContainerPropsType = {
-    users: UsersType
+    users: UserType[]
     currentPage: number
     totalUsersCount: number
     pageSize: number

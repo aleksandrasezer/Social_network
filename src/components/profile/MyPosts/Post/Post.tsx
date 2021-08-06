@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Post.module.css"
-import {PostType} from "../../../../redux/store";
 import {Button} from "../../../Button/Button";
+import {PostType} from "../../../../types/types";
 
 
 type PostPropsType = PostType &

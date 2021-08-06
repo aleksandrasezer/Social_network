@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./Messages.module.css";
 import Message from "./message/Message";
-import {MessageType} from "../../../redux/store";
 import {Button} from "../../Button/Button";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../validators/validators";
 import {Input} from "../../common/formControls/FormControls";
+import {MessageType} from "../../../types/types";
 
 type MessagesPropsType = {
     messages: MessageType[]
