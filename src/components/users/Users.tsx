@@ -1,9 +1,7 @@
 import s from "./Users.module.css";
-import userPhoto from "../../assets/images/bryan_avatar.jpg";
-import {Button} from "../Button/Button";
 import React from "react";
-import {NavLink} from "react-router-dom";
 import {UserType} from "../../types/types";
+import {User} from "./user/User";
 
 type UsersPropsType = {
     users: UserType[]
@@ -26,33 +24,12 @@ export const Users = (props: UsersPropsType) => {
             })}
         </div>
 
-        {props.users.map(u =>
-            <div key={u.id} className={s.userBody}>
-                <div className={s.avatarAndFollow}>
-
-                    <div>
-                        <NavLink to={`/profile/${u.id}`}>
-                            <img src={u.photos.small || userPhoto}
-                                 className={s.profilePic}
-                                 alt='avatar'/>
-                        </NavLink>
-                    </div>
-
-                    <div>
-                        {u.followed
-                            ? <Button
-                                disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => { props.unfollow(u.id) }}>Unfollow</Button>
-                            : <Button
-                                disabled={props.followingInProgress.some(id => id === u.id)}
-                                onClick={() => { props.follow(u.id) }}>Follow</Button>}
-                    </div>
-                </div>
-                <div className={s.infoContainer}>
-                    <span className={s.nameSurname}>{u.name}</span>
-
-                    <span className={s.cityCountry}>{"u.city"}, {"u.country"}</span>
-                </div>
-            </div>)}
+        {props.users.map(u => <User id={u.id}
+                                    photos={u.photos}
+                                    followed={u.followed}
+                                    followingInProgress={props.followingInProgress}
+                                    unfollow={props.unfollow}
+                                    follow={props.follow}
+                                    name={u.name}/>)}
     </div>
 }
