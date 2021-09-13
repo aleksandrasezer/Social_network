@@ -18,8 +18,10 @@ export const appReducer = (state = initState, action: AppActionsType): InitState
             return state
     }
 }
-
+//action creators
 const initializingSuccess = () => ({type: 'APP/INITIALIZED_SUCCESS'} as const)
+
+//thunk
 export const initializeApp = (): AppThunk => (dispatch) => {
     let promise = dispatch(setAuthUserData())
     Promise.all([promise])

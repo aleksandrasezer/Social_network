@@ -45,26 +45,20 @@ const setUsersProfile = (profile: ProfileType | null) => ({type: 'PROFILE/SET-PR
 const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', status} as const)
 
 //thunk-creators
-
-export const setUserProfileInfo = (userId: string): AppThunk => (dispatch) => {
-    return profileAPI.getUserProfile(userId).then(data => {
-        dispatch(setUsersProfile(data))
-    })
-
+export const setUserProfileInfo = (userId: string): AppThunk => async (dispatch) => {
+    const userData = await profileAPI.getUserProfile(userId)
+    dispatch(setUsersProfile(userData))
+}
+export const setUserStatus = (userId: string): AppThunk => async (dispatch) => {
+    const response = await profileAPI.getUserStatus(userId)
+    if (response.status === 200) {
+        dispatch(setUsersStatus(response.data))
+    }
+}
+export const setMyStatus = (newStatus: string): AppThunk => async (dispatch) => {
+    const response = await profileAPI.setMyStatus(newStatus)
+    if (response.status === 200) {
+        dispatch(setUsersStatus(newStatus))
+    }
 }
 
-export const setUserStatus = (userId: string): AppThunk => (dispatch) => {
-    return profileAPI.getUserStatus(userId).then((response) => {
-        if (response.status === 200) {
-            dispatch(setUsersStatus(response.data))
-        }
-    })
-}
-
-export const setMyStatus = (newStatus: string): AppThunk => (dispatch) => {
-    return profileAPI.setMyStatus(newStatus).then((response) => {
-        if (response.status === 200) {
-            dispatch(setUsersStatus(newStatus))
-        }
-    })
-}
