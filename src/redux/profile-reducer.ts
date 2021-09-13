@@ -3,11 +3,7 @@ import {profileAPI} from "../dal/api";
 import {ProfileType} from "../types/types";
 import {AppThunk} from "./redux-store";
 
-const REMOVE_POST = 'REMOVE_POST'
-const SET_USERS_PROFILE = 'SET_PROFILE'
-const SET_USERS_STATUS = 'SET_USERS_STATUS'
-
-export type ProfileActionsType = ReturnType<typeof removePostAC> | ReturnType<typeof setUsersProfile> |
+export type ProfileActionsType = ReturnType<typeof deletePostAC> | ReturnType<typeof setUsersProfile> |
     ReturnType<typeof setUsersStatus>
 
 let initialState = {
@@ -25,15 +21,15 @@ type InitialStateType = typeof initialState
 
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType): InitialStateType => {
     switch (action.type) {
-        case REMOVE_POST:
+        case 'PROFILE/DELETE-POST':
             return {
                 ...state, posts: [...state.posts].filter(p => p.id !== action.id)
             }
         case
-        SET_USERS_PROFILE:
+        'PROFILE/SET-PROFILE':
             return {...state, profile: action.profile}
         case
-        SET_USERS_STATUS:
+        'PROFILE/SET-USERS-STATUS':
             return {...state, userStatus: action.status}
         default:
             return {...state}
@@ -42,11 +38,11 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 
 //action-creators
 
-export const removePostAC = (id: string) => ({type: REMOVE_POST, id} as const)
+export const deletePostAC = (id: string) => ({type: 'PROFILE/DELETE-POST', id} as const)
 
-const setUsersProfile = (profile: ProfileType | null) => ({type: SET_USERS_PROFILE, profile} as const)
+const setUsersProfile = (profile: ProfileType | null) => ({type: 'PROFILE/SET-PROFILE', profile} as const)
 
-const setUsersStatus = (status: string) => ({type: SET_USERS_STATUS, status} as const)
+const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', status} as const)
 
 //thunk-creators
 

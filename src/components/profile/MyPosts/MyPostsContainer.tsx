@@ -1,4 +1,4 @@
-import {removePostAC} from "../../../redux/profile-reducer";
+import {deletePostAC} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
 import {AppDispatch, RootState} from "../../../redux/redux-store";
@@ -11,7 +11,7 @@ let mapStateToProps = (state: RootState) => {
 }
 let mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
-        removePost: (id: string) => dispatch(removePostAC(id)),
+        removePost: (id: string) => dispatch(deletePostAC(id)),
     }
 }
 

@@ -2,10 +2,8 @@ import {authAPI} from "../dal/api";
 import {stopSubmit} from "redux-form";
 import {AppThunk} from "./redux-store";
 
-const SET_USER_DATA = 'SET_USER_DATA'
 
 export type InitStateType = typeof initState
-
 export type AuthActionsType = ReturnType<typeof setAuthUserLogin>
 
 const initState = {
@@ -17,9 +15,8 @@ const initState = {
 
 export const authReducer = (state: InitStateType = initState, action: AuthActionsType): InitStateType => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case 'AUTH/SET_USER_DATA':
             return {...state, ...action.payload}
-
         default:
             return state
     }
@@ -27,7 +24,7 @@ export const authReducer = (state: InitStateType = initState, action: AuthAction
 
 const setAuthUserLogin = (userId: number | null, login: string | null, email: string | null, isAuth: boolean) => {
     return {
-        type: SET_USER_DATA,
+        type: 'AUTH/SET_USER_DATA',
         payload: {userId, login, email, isAuth}
     } as const
 }
