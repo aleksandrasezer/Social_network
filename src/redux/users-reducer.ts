@@ -1,6 +1,7 @@
 import {followAPI, usersAPI} from "../dal/api";
 import {UserType} from "../types/types";
 import {AppThunk} from "./redux-store";
+import {Dispatch} from "redux";
 
 export type UsersActionsType = ReturnType<typeof follow> | ReturnType<typeof unfollow> |
     ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
@@ -73,29 +74,28 @@ export const setUsersFromServer = (currentPage: number, pageSize: number): AppTh
     }
 }
 
+export const _followUnfollow = async (dispatch: Dispatch,
+                                      userId: number,
+                                      apiRequest: any,
+                                      actionCreator: any) => {
+    dispatch(setIsFetching(true))
+    setFollowingProgress(true, userId)
+    const response = await apiRequest(userId)
+    if (response.resultCode === 0) {
+        dispatch(actionCreator(userId))
+        dispatch(setIsFetching(false))
+    }
+}
 
 export const followUser = (userId: number): AppThunk => {
     return async (dispatch) => {
-        dispatch(setIsFetching(true))
-        dispatch(setFollowingProgress(true, userId))
-        const followData = await followAPI.followUser(userId)
-        if (followData.resultCode === 0) {
-            dispatch(follow(userId))
-        }
-        dispatch(setFollowingProgress(false, userId))
-        dispatch(setIsFetching(false))
+        await _followUnfollow(dispatch, userId, followAPI.followUser.bind(followAPI), follow)
     }
 }
 export const unfollowUser = (userId: number): AppThunk => {
     return async (dispatch) => {
-        dispatch(setIsFetching(true))
-        dispatch(setFollowingProgress(true, userId))
-        const followData = await followAPI.unfollowUser(userId)
-        if (followData.resultCode === 0) {
-            dispatch(unfollow(userId))
-        }
-        dispatch(setFollowingProgress(false, userId))
-        dispatch(setIsFetching(false))
+        await _followUnfollow(dispatch, userId, followAPI.unfollowUser.bind(followAPI), unfollow);
     }
 }
+
 
