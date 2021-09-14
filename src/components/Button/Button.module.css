@@ -7,6 +7,7 @@
     border-left: 2px solid mediumslateblue;
     border-bottom: 2px solid darkslateblue;
     border-right: 2px solid darkslateblue;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 .buttonStyle button:active {
     background-color: cornflowerblue;

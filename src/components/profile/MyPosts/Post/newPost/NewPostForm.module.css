@@ -1,0 +1,12 @@
+.newPostForm {
+
+}
+.newPostForm textarea {
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    outline: none;
+    width: 95%;
+}
+.newPostForm button {
+
+}

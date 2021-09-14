@@ -1,9 +1,9 @@
 .navbar {
     grid-area: n;
     background-color: mediumpurple;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
     padding: 15px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .item a {
     text-decoration: none;

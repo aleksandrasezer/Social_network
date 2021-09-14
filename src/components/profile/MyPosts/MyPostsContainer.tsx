@@ -1,7 +1,7 @@
-import {deletePostAC} from "../../../redux/profile-reducer";
+import {addPostAC, deletePostAC} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
-import {AppDispatch, RootState} from "../../../redux/redux-store";
+import {RootState} from "../../../redux/redux-store";
 
 let mapStateToProps = (state: RootState) => {
     return {
@@ -9,10 +9,6 @@ let mapStateToProps = (state: RootState) => {
         newPostText: state.profilePage.newPostText
     }
 }
-let mapDispatchToProps = (dispatch: AppDispatch) => {
-    return {
-        removePost: (id: string) => dispatch(deletePostAC(id)),
-    }
-}
 
-export const MyPostsContainer = connect(mapStateToProps,mapDispatchToProps)(MyPosts)
+export const MyPostsContainer =
+    connect(mapStateToProps, {deletePostAC,addPostAC})(MyPosts)

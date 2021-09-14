@@ -1,10 +1,13 @@
 import React, {ChangeEvent} from "react";
 import s from './ControlledTextarea.module.css';
+import {Button} from "../Button/Button";
 
 type ControlledTextareaPropsTYpe = {
     onPostChange: (text: string) => void
     value: string
     onTextClick: () => void
+    onPublishPost: () => void
+    buttonChild: string
 }
 
 export function ControlledTextarea(props: ControlledTextareaPropsTYpe) {
@@ -22,6 +25,7 @@ export function ControlledTextarea(props: ControlledTextareaPropsTYpe) {
                       value={props.value}
                       onClick={props.onTextClick}
                       autoFocus/>
+            <Button onClick={props.onPublishPost}>{props.buttonChild}</Button>
         </div>
     )
 }

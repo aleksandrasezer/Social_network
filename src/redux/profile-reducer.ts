@@ -1,10 +1,12 @@
 import {v1} from "uuid";
 import {profileAPI} from "../dal/api";
-import {ProfileType} from "../types/types";
+import {PostType, ProfileType} from "../types/types";
 import {AppThunk} from "./redux-store";
 
-export type ProfileActionsType = ReturnType<typeof deletePostAC> | ReturnType<typeof setUsersProfile> |
-    ReturnType<typeof setUsersStatus>
+export type ProfileActionsType = ReturnType<typeof deletePostAC>
+    | ReturnType<typeof setUsersProfile>
+    | ReturnType<typeof setUsersStatus>
+    | ReturnType<typeof addPostAC>
 
 let initialState = {
     posts: [
@@ -14,7 +16,7 @@ let initialState = {
     ],
     newPostText: 'write something..',
     profile: null as ProfileType | null,
-    userStatus: ''
+    userStatus: '',
 }
 
 type InitialStateType = typeof initialState
@@ -23,14 +25,22 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
     switch (action.type) {
         case 'PROFILE/DELETE-POST':
             return {
-                ...state, posts: [...state.posts].filter(p => p.id !== action.id)
+                ...state,
+                posts: [...state.posts].filter(p => p.id !== action.id)
             }
-        case
-        'PROFILE/SET-PROFILE':
+        case 'PROFILE/SET-PROFILE':
             return {...state, profile: action.profile}
-        case
-        'PROFILE/SET-USERS-STATUS':
+        case 'PROFILE/SET-USERS-STATUS':
             return {...state, userStatus: action.status}
+        case 'PROFILE/ADD-POST':
+            const newPost: PostType = {
+                id: v1(),
+                postText: action.newPostText,
+                likesCount: 1
+            }
+            return {...state,
+                posts: [newPost,...state.posts]
+            }
         default:
             return {...state}
     }
@@ -39,9 +49,8 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 //action-creators
 
 export const deletePostAC = (id: string) => ({type: 'PROFILE/DELETE-POST', id} as const)
-
+export const addPostAC = (newPostText: string) => ({type: 'PROFILE/ADD-POST', newPostText} as const)
 const setUsersProfile = (profile: ProfileType | null) => ({type: 'PROFILE/SET-PROFILE', profile} as const)
-
 const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', status} as const)
 
 //thunk-creators

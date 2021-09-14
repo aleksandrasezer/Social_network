@@ -1,12 +1,15 @@
 .header {
     grid-area: h;
     background-color: mediumslateblue;
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 
 .header img {
     height: 66px;
     background: transparent;
     border: 2px solid mediumslateblue;
+    border-radius: 15px;
 }
 
 .loginBlock {

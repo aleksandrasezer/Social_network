@@ -5,7 +5,7 @@ import {PostType} from "../../../../types/types";
 
 
 type PostPropsType = PostType &
-    {removePost: (id: string) => void}
+    {deletePost: (id: string) => void}
 
 function Post(props: PostPropsType) {
 
@@ -21,8 +21,9 @@ function Post(props: PostPropsType) {
                 </div>
             </div>
             <div className={s.likeArea}>
-                <span>likesCount = {props.likesCount}</span>
-                <Button onClick={() => props.removePost(props.id)}
+                <span className={s.likes}>likesCount = {props.likesCount}</span>
+
+                <Button onClick={() => props.deletePost(props.id)}
                         disabled={false}> Remove </Button>
             </div>
         </div>

@@ -1,12 +1,14 @@
 .profilePic {
     width: 100px;
     height: 100px;
-    border-radius: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .infoContainer {
-    border: 1px solid rgba(255,255,255,0.6);
+/*    border: 1px solid rgba(255,255,255,0.6);*/
     border-radius: 15px;
     padding: 25px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .userBody {
     display: grid;

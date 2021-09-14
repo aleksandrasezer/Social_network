@@ -7,14 +7,21 @@
 
 }
 .post img {
-    height: 50px;
-    border-radius: 15px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .postText {
-    border: 1px solid lightpink;
+/*    border: 1px solid rgba(255,255,255,0.6);*/
     border-radius: 15px;
-    padding: 15px;
+    padding: 25px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .likeArea {
+    margin-top: 5px;
     text-align: right;
+}
+.likes {
+
 }
