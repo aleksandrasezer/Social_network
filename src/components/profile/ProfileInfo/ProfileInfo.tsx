@@ -18,17 +18,22 @@ function ProfileInfo(props: ProfileInfoPropsType) {
         {!props.profile
             ? <Preload/>
 
-            : <div>
-                <div>
+            : <div className={s.profileInfoContainer}>
+
+                <div className={s.profilePicBox}>
                     <img src={props.profile.photos.large || avatar} alt='profile_avatar'/>
                 </div>
 
-                <ProfileStatus userStatus={props.userStatus}
-                               setMyStatus={props.setMyStatus}/>
-
                 <div className={s.profileInfo}>
-                    {props.profile.fullName} <br/>
-                    {props.profile.aboutMe}
+
+                    <div className={s.profileName}>
+                        {props.profile.fullName}
+                    </div>
+
+                    <div className={s.profileStatus}>
+                    <ProfileStatus userStatus={props.userStatus}
+                                   setMyStatus={props.setMyStatus}/>
+                    </div>
                 </div>
 
             </div>

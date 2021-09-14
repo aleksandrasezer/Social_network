@@ -23,7 +23,7 @@ export const Likes = (props: LikesPropsType) => {
             {props.likesCount}
         </div>
 
-        <div className={heartClassName} onClick={onHeartClickHandler}></div>
+        <div title='Like' className={heartClassName} onClick={onHeartClickHandler}></div>
 
     </div>
 }
