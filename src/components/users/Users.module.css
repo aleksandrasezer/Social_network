@@ -1,34 +1,45 @@
-.profilePic {
-    width: 100px;
-    height: 100px;
+.usersPage {
+
+}
+
+.usersList {
+    margin-top: 10px;
+}
+.paginateContainer {
+
+}
+
+
+.pagination {
+    margin-top: 15px;
+    display: flex;
+    list-style: none;
+    outline: none;
+}
+.pagination a:hover {
+    background-color: rgba(50,200,255,0.6);
+}
+.pagination > .active > a{
+    background-color: cornflowerblue ;
+    border-color: rgba(255,255,255,0.8) ;
+    color: rgba(255,255,255,1);
+}
+.pagination > li > a{
+    border: 1px solid rgba(255,255,255,0.8) ;
+    padding: 2px 7px;
+    outline: none;
+    cursor: pointer;
     border-radius: 5px;
 }
-.infoContainer {
-    border: 1px solid lightpink;
-    border-radius: 15px;
-    padding: 25px;
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: cornflowerblue ;
+    border-color: rgba(255,255,255,1);
+    outline: none ;
 }
-.userBody {
-    display: grid;
-    grid-template-columns: 2fr 9fr;
-    padding: 15px;
-}
-.avatarAndFollow {
-    text-align: center;
-}
-.nameSurname {
-    float: left;
-}
-.cityCountry {
-    float: right;
-}
-.center {
-    text-align: center;
-}
-.selectedPage {
+.pagination > li > a, .pagination > li > span{
+    color: rgba(255,255,255,1);
     font-weight: bold;
 }
-.pageNumbers {
-    max-width: 1100px;
-    text-align: center;
+.pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+    border-radius: 5px;
 }

@@ -21,7 +21,7 @@ let initialState: UsersPageType = {
     users: [],
     currentPage: 1,
     totalUsersCount: 0,
-    pageSize: 100,
+    pageSize: 20,
     isFetching: false,
     followingInProgress: []
 }

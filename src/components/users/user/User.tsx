@@ -1,5 +1,5 @@
 import React from "react";
-import s from "../Users.module.css";
+import s from "./User.module.css";
 import {NavLink} from "react-router-dom";
 import userPhoto from "../../../assets/images/bryan_avatar.jpg";
 import {Button} from "../../Button/Button";

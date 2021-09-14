@@ -11,10 +11,11 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 
 export function Button(props: DefaultButtonPropsType) {
     return (
-        <>
-        <button className={s.buttonStyle}
-                disabled={props.disabled}
-                onClick={props.onClick}>{props.children}</button>
-        </>
+        <span className={s.buttonStyle}>
+        <button disabled={props.disabled}
+                onClick={props.onClick}>
+            {props.children}
+        </button>
+        </span>
     )
 }

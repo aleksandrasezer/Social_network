@@ -34,29 +34,34 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
         this.props.setUsersFromServer(this.props.currentPage, this.props.pageSize)
     }
 
-    onPageChanged = (p: number) => {
-        this.props.setCurrentPage(p)
-        this.props.setUsersFromServer(p,this.props.pageSize)
+    onPageChanged = (selectedItem: { selected: number}) => {
+        this.props.setCurrentPage(selectedItem.selected)
+        this.props.setUsersFromServer(selectedItem.selected,this.props.pageSize)
+    }
+    onNextPage = () => {
+        this.props.setCurrentPage(this.props.currentPage + 1)
+    }
+    onPrevPage = () => {
+        this.props.setCurrentPage(this.props.currentPage - 1)
     }
 
     render() {
-
-        let pages = []
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-        for (let i = 1; i <= pagesCount; i++) pages.push(i)
 
         return <>
 
             {this.props.isFetching && <Preload />}
 
             <Users users={this.props.users}
-                   pages={pages}
+                   pageSize={this.props.pageSize}
+                   totalUsersCount={this.props.totalUsersCount}
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
                    follow={this.props.followUser}
                    unfollow={this.props.unfollowUser}
                    followingInProgress={this.props.followingInProgress}
                    isFetching={this.props.isFetching}
+                   onNextPage={this.onNextPage}
+                   onPrevPage={this.onPrevPage}
                    />
         </>
     }

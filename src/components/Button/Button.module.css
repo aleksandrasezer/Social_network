@@ -1,4 +1,4 @@
-.buttonStyle {
+.buttonStyle button {
     padding: 5px;
     color: white;
     border-radius: 5px;
@@ -8,17 +8,17 @@
     border-bottom: 2px solid darkslateblue;
     border-right: 2px solid darkslateblue;
 }
-.buttonStyle:active {
+.buttonStyle button:active {
     background-color: cornflowerblue;
     border-bottom: 2px solid mediumslateblue;
     border-right: 2px solid mediumslateblue;
     border-top: 2px solid darkslateblue;
     border-left: 2px solid darkslateblue;
 }
-.buttonStyle:hover {
+.buttonStyle button:hover {
     background-color: royalblue;
 }
-.buttonStyle:disabled {
+.buttonStyle button:disabled {
     background-color: lightgrey;
     border-color: darkgray;
 }
