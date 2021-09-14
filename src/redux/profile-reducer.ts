@@ -3,10 +3,12 @@ import {profileAPI} from "../dal/api";
 import {PostType, ProfileType} from "../types/types";
 import {AppThunk} from "./redux-store";
 
-export type ProfileActionsType = ReturnType<typeof deletePostAC>
+export type ProfileActionsType =
+    ReturnType<typeof deletePostAC>
     | ReturnType<typeof setUsersProfile>
     | ReturnType<typeof setUsersStatus>
     | ReturnType<typeof addPostAC>
+    | ReturnType<typeof addLikeAC>
 
 let initialState = {
     posts: [
@@ -32,14 +34,21 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             return {...state, profile: action.profile}
         case 'PROFILE/SET-USERS-STATUS':
             return {...state, userStatus: action.status}
+        case 'PROFILE/ADD-LIKE':
+            return {
+                ...state,
+                posts: [...state.posts]
+                    .map(p => p.id === action.id ? {...p,likesCount: p.likesCount + 1} : p)
+            }
         case 'PROFILE/ADD-POST':
             const newPost: PostType = {
                 id: v1(),
                 postText: action.newPostText,
-                likesCount: 1
+                likesCount: 0
             }
-            return {...state,
-                posts: [newPost,...state.posts]
+            return {
+                ...state,
+                posts: [newPost, ...state.posts]
             }
         default:
             return {...state}
@@ -50,6 +59,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 
 export const deletePostAC = (id: string) => ({type: 'PROFILE/DELETE-POST', id} as const)
 export const addPostAC = (newPostText: string) => ({type: 'PROFILE/ADD-POST', newPostText} as const)
+export const addLikeAC = (id: string) => ({type: 'PROFILE/ADD-LIKE', id} as const)
 const setUsersProfile = (profile: ProfileType | null) => ({type: 'PROFILE/SET-PROFILE', profile} as const)
 const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', status} as const)
 

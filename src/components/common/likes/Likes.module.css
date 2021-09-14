@@ -1,0 +1,70 @@
+.likesContainer {
+    display: inline-block;
+}
+.likesCount{
+    display: inline-block;
+}
+
+.heart {
+    background-color: grey;
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 10px;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    background-color: grey;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+}
+
+.heart:before {
+    top: -5px;
+    left: 0;
+}
+
+.heart:after {
+    left: 5px;
+    top: 0;
+}
+
+
+
+.red {
+    background-color: red;
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 10px;
+}
+
+.red:before,
+.red:after {
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+}
+
+.red:before {
+    top: -5px;
+    left: 0;
+}
+
+.red:after {
+    left: 5px;
+    top: 0;
+}

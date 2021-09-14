@@ -1,8 +1,8 @@
 import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Textarea} from "../../../../common/formControls/FormControls";
-import {maxLengthCreator, required} from "../../../../../validators/validators";
-import {Button} from "../../../../Button/Button";
+import {Textarea} from "../../../common/formControls/FormControls";
+import {maxLengthCreator, required} from "../../../../validators/validators";
+import {Button} from "../../../Button/Button";
 import s from './NewPostForm.module.css'
 
 const maxLength60tn = maxLengthCreator(60000)
