@@ -22,3 +22,22 @@
     text-decoration: none;
     color: white;
 }
+.userName {
+    display: inline-block;
+    padding: 5px 15px 5px 15px;
+    border-right: 1px solid white;
+    color: rgba(255,255,255,0.8);
+}
+.logOut {
+    display: inline-block;
+    padding: 5px 15px 5px 15px;
+    color: rgba(255,255,255,0.8);
+}
+.logOut:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.2);
+}
+.userName:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.2);
+}
