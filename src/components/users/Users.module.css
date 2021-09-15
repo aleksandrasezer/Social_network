@@ -6,6 +6,7 @@
     margin-top: 10px;
 }
 .paginateContainer {
+    margin: 30px auto;
 
 }
 
@@ -25,11 +26,11 @@
     color: rgba(255,255,255,1);
 }
 .pagination > li > a{
-    border: 1px solid rgba(255,255,255,0.8) ;
-    padding: 2px 7px;
+    padding: 7px 14px;
+    background-color: rgba(255,255,255,0.2);
     outline: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50%;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
     background-color: cornflowerblue ;

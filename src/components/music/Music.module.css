@@ -1,0 +1,34 @@
+.musicContainer {
+    margin: 50px auto;
+}
+
+.spotifyIcon {
+    text-align: center;
+    display: block;
+}
+
+.spotifyIcon img {
+    height: 110px;
+    cursor: pointer;
+}
+
+.spotifyText {
+    margin: 20px auto;
+    text-align: center;
+    display: block;
+    vertical-align: center;
+    font-size: large;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.arrowDown {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 13px solid rgba(255, 255, 255, 0.8);
+    font-size: 0;
+    line-height: 0;
+}
+
+

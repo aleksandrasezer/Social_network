@@ -5,17 +5,35 @@ import {NavLink} from "react-router-dom";
 function Navbar() {
     return <div className={s.navbar}>
         <div className={s.item}>
-            <NavLink activeClassName={s.activeLink} to="/profile">Profile</NavLink>
+            <NavLink activeClassName={s.activeLink} to="/profile">
+                <div className={s.linkName}>Profile</div>
+            </NavLink>
         </div>
+
         <div className={s.item}>
-            <NavLink activeClassName={s.activeLink} to="/dialogs">Messages</NavLink>
+            <NavLink activeClassName={s.activeLink} to="/dialogs">
+                <div className={s.linkName}>Messages</div>
+            </NavLink>
         </div>
+
         <div className={s.item}>
-            <NavLink activeClassName={s.activeLink} to='/users'>Users</NavLink>
+            <NavLink activeClassName={s.activeLink} to='/users'>
+                <div className={s.linkName}>Users</div>
+
+            </NavLink>
         </div>
-        <div className={s.item}><a href="/feed">News</a></div>
-        <div className={s.item}><a href="/music">Music</a></div>
-        <div className={s.item}><a href="/settings">Settings</a></div>
+
+        <div className={s.item}>
+            <NavLink activeClassName={s.activeLink} to='/music'>
+                <div className={s.linkName}>Music</div>
+            </NavLink>
+        </div>
+
+        <div className={s.item}>
+            <NavLink activeClassName={s.activeLink} to='/video'>
+                <div className={s.linkName}>Video</div>
+            </NavLink>
+        </div>
     </div>
 }
 

@@ -11,6 +11,8 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import {RootState} from "./redux/redux-store";
 import {Preload} from "./components/common/preload/Preload";
+import {Music} from "./components/music/Music";
+import {Video} from "./components/video/Video";
 
 type AppPropsType = {
     initializeApp: () => void
@@ -33,6 +35,8 @@ class App extends React.Component<AppPropsType> {
                     <Navbar/>
                     <div className="app_wrapper_content">
 
+                        <Route path='/' exact render={() => <ProfileContainer/>}/>
+
                         <Route path='/dialogs' render={() => <Dialogs/>}/>
 
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
@@ -40,6 +44,10 @@ class App extends React.Component<AppPropsType> {
                         <Route path='/users' render={() => <UsersContainer/>}/>
 
                         <Route path='/login' render={() => <Login/>}/>
+
+                        <Route path='/music' render={() => <Music/>}/>
+
+                        <Route path='/video' render={() => <Video />}/>
 
                     </div>
                 </div>
