@@ -1,0 +1,13 @@
+.newMessageForm {
+
+}
+.newMessageForm textarea {
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    outline: none;
+    min-width: 300px;
+}
+.newMessageForm button {
+
+}

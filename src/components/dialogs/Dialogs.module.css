@@ -2,11 +2,13 @@
     display: grid;
     grid-template-areas:
     'di m';
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 4fr;
 }
 .dialogsItems {
-    padding: 15px;
+    margin: 15px;
+    padding-right: 15px;
     grid-area: di;
+    border-right: 2px solid rgba(255,255,255,0.3);
 }
 .messages {
     grid-area: m;

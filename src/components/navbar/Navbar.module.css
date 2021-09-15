@@ -2,14 +2,17 @@
     grid-area: n;
     background-color: mediumpurple;
     border-radius: 15px;
-    padding: 22px 15px 15px 15px;
+    padding: 15px;
     box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
 .linkName {
     font-size: large;
     padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 9px;
     padding-left: 15px;
+}
+.item {
+    border-radius: 10px;
 }
 .item:hover {
     background-color: rgba(255,255,255,0.2);

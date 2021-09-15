@@ -1,42 +1,13 @@
 import React from "react";
 import s from "./Messages.module.css";
 import Message from "./message/Message";
-import {Button} from "../../Button/Button";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../validators/validators";
-import {Input} from "../../common/formControls/FormControls";
 import {MessageType} from "../../../types/types";
+import MessageForm, {FormDataType} from "./message/newMessage/NewMessage";
 
 type MessagesPropsType = {
     messages: MessageType[]
     newMessageText: string
 }
-
-type FormDataType = {
-    massage: string
-}
-
-const maxLength100 = maxLengthCreator(100)
-
-const MessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
-    return (
-        <div>
-            <form onSubmit={props.handleSubmit}>
-                <div>
-                <Field placeholder={'message'}
-                       name={'message'}
-                       component={Input}
-                       validate={[required, maxLength100]}/>
-                </div>
-
-                <div>
-                <Button>Send</Button>
-                </div>
-            </form>
-        </div>
-    )
-}
-const MessageReduxForm = reduxForm<FormDataType>({form: 'message'})(MessageForm)
 
 function Messages(props: MessagesPropsType) {
 
@@ -48,12 +19,12 @@ function Messages(props: MessagesPropsType) {
     }
 
     return (
-        <div>
+        <div className={s.messagesContainer}>
             <div className={s.messages}>
                 {messagesItems}
             </div>
 
-            <MessageReduxForm onSubmit={onSubmit} />
+            <MessageForm onSubmit={onSubmit} />
 
         </div>
     )
