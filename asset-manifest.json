@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/Social_network/static/css/main.fd5a0df0.chunk.css",
-    "main.js": "/Social_network/static/js/main.54757eac.chunk.js",
-    "main.js.map": "/Social_network/static/js/main.54757eac.chunk.js.map",
-    "runtime-main.js": "/Social_network/static/js/runtime-main.608c1d7e.js",
-    "runtime-main.js.map": "/Social_network/static/js/runtime-main.608c1d7e.js.map",
-    "static/js/2.2defbf66.chunk.js": "/Social_network/static/js/2.2defbf66.chunk.js",
-    "static/js/2.2defbf66.chunk.js.map": "/Social_network/static/js/2.2defbf66.chunk.js.map",
-    "static/js/3.546d6300.chunk.js": "/Social_network/static/js/3.546d6300.chunk.js",
-    "static/js/3.546d6300.chunk.js.map": "/Social_network/static/js/3.546d6300.chunk.js.map",
+    "main.css": "/Social_network/static/css/main.96f26032.chunk.css",
+    "main.js": "/Social_network/static/js/main.d2d3414f.chunk.js",
+    "main.js.map": "/Social_network/static/js/main.d2d3414f.chunk.js.map",
+    "runtime-main.js": "/Social_network/static/js/runtime-main.624d05e3.js",
+    "runtime-main.js.map": "/Social_network/static/js/runtime-main.624d05e3.js.map",
+    "static/js/2.f50b3259.chunk.js": "/Social_network/static/js/2.f50b3259.chunk.js",
+    "static/js/2.f50b3259.chunk.js.map": "/Social_network/static/js/2.f50b3259.chunk.js.map",
+    "static/js/3.96ff2327.chunk.js": "/Social_network/static/js/3.96ff2327.chunk.js",
+    "static/js/3.96ff2327.chunk.js.map": "/Social_network/static/js/3.96ff2327.chunk.js.map",
     "index.html": "/Social_network/index.html",
-    "static/css/main.fd5a0df0.chunk.css.map": "/Social_network/static/css/main.fd5a0df0.chunk.css.map",
-    "static/js/2.2defbf66.chunk.js.LICENSE.txt": "/Social_network/static/js/2.2defbf66.chunk.js.LICENSE.txt",
+    "static/css/main.96f26032.chunk.css.map": "/Social_network/static/css/main.96f26032.chunk.css.map",
+    "static/js/2.f50b3259.chunk.js.LICENSE.txt": "/Social_network/static/js/2.f50b3259.chunk.js.LICENSE.txt",
+    "static/media/morty.17d23175.png": "/Social_network/static/media/morty.17d23175.png",
     "static/media/spotify_icon.3b2959fb.png": "/Social_network/static/media/spotify_icon.3b2959fb.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.608c1d7e.js",
-    "static/js/2.2defbf66.chunk.js",
-    "static/css/main.fd5a0df0.chunk.css",
-    "static/js/main.54757eac.chunk.js"
+    "static/js/runtime-main.624d05e3.js",
+    "static/js/2.f50b3259.chunk.js",
+    "static/css/main.96f26032.chunk.css",
+    "static/js/main.d2d3414f.chunk.js"
   ]
 }
