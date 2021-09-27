@@ -2,11 +2,10 @@ import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {PostType, ProfileType} from "../../../types/types";
-import NewPostForm, {FormDataType} from "./newPost/NewPostForm";
+import NewPostForm, {PostFormDataType} from "./newPost/NewPostForm";
 
 type MyPostsPropsType = {
     posts: PostType[]
-    newPostText: string
     deletePostAC: (id: string) => void
     addPostAC: (newPostText: string) => void
     addLikeAC: (id: string) => void
@@ -25,7 +24,7 @@ function MyPosts(props: MyPostsPropsType) {
                                                      profile={props.profile}/>)
 
     //handler for add post redux form
-    const onAddPost = (formData: FormDataType) => {
+    const onAddPost = (formData: PostFormDataType) => {
         props.addPostAC(formData.newPost)
     }
 

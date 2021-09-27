@@ -5,13 +5,14 @@ import {Textarea} from "../../../../common/formControls/FormControls";
 import {Button} from "../../../../Button/Button";
 import s from "./NewMessage.module.css";
 
-export type FormDataType = {
-    massage: string
+export type MessageFormDataType = {
+    message: string
 }
 
 const maxLength5000 = maxLengthCreator(5000)
 
-const MessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+const MessageForm: React.FC<InjectedFormProps<MessageFormDataType>> = (props) => {
+
     return (
         <div className={s.newMessageForm}>
             <form onSubmit={props.handleSubmit}>
@@ -29,4 +30,4 @@ const MessageForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
         </div>
     )
 }
-export default reduxForm<FormDataType>({form: 'message'})(MessageForm)
+export default reduxForm<MessageFormDataType>({form: 'message'})(MessageForm)

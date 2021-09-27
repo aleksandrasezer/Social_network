@@ -1,0 +1,14 @@
+.loginContainer {
+    margin: 10px auto;
+    max-width: 200px;
+    text-align: center;
+}
+
+.free {
+    color: grey;
+    font-size: smaller;
+    margin-bottom: 20px;
+}
+.loginItem {
+    margin-bottom: 20px;
+}

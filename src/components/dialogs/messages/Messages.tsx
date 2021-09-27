@@ -2,11 +2,12 @@ import React from "react";
 import s from "./Messages.module.css";
 import Message from "./message/Message";
 import {MessageType} from "../../../types/types";
-import MessageForm, {FormDataType} from "./message/newMessage/NewMessage";
+import MessageForm, {MessageFormDataType} from "./message/newMessage/NewMessage";
 
 type MessagesPropsType = {
     messages: MessageType[]
     newMessageText: string
+    addMessage: (message: string) => void
 }
 
 function Messages(props: MessagesPropsType) {
@@ -14,8 +15,9 @@ function Messages(props: MessagesPropsType) {
         let messagesItems = props.messages.map((el) => <Message key={el.id} id={el.id} message={el.messageText}/>)
     console.log(props.messages)
 
-    const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+    const onAddMessage = (formData: MessageFormDataType) => {
+
+        props.addMessage(formData.message)
     }
 
     return (
@@ -24,7 +26,7 @@ function Messages(props: MessagesPropsType) {
                 {messagesItems}
             </div>
 
-            <MessageForm onSubmit={onSubmit} />
+            <MessageForm onSubmit={onAddMessage} />
 
         </div>
     )

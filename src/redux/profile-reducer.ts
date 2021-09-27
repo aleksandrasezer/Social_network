@@ -16,7 +16,6 @@ let initialState = {
         {id: v1(), postText: "It's cold in here", likesCount: 12},
         {id: v1(), postText: "I miss my mom", likesCount: 35},
     ],
-    newPostText: 'write something..',
     profile: null as ProfileType | null,
     userStatus: '',
 }

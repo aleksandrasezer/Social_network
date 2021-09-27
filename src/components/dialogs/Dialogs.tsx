@@ -8,20 +8,23 @@ type DialogsPropsType = {
     messages: MessageType[]
     dialogs: DialogType[]
     newMessageText: string
+    addMessageAC: (message: string) => void
 }
+
 function Dialogs(props: DialogsPropsType) {
 
-    let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name} />)
+    let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name}/>)
 
     return (
 
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                { dialogsItems }
+                {dialogsItems}
             </div>
             <div className={s.messages}>
-                <Messages   messages={props.messages}
-                          newMessageText={props.newMessageText} />
+                <Messages messages={props.messages}
+                          newMessageText={props.newMessageText}
+                          addMessage={props.addMessageAC}/>
             </div>
         </div>
     )

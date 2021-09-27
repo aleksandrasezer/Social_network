@@ -3,7 +3,7 @@ import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {setMyStatus, setUserProfileInfo, setUserStatus} from "../../redux/profile-reducer";
 import Profile from "./Profile";
-import {RouteComponentProps, withRouter } from "react-router"
+import {RouteComponentProps, withRouter} from "react-router"
 import {compose} from "redux";
 import {ProfileType} from "../../types/types";
 
@@ -34,9 +34,10 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
         if (!userId) {
             userId = this.props.authorizedUserId
-        if (!userId) {
-            this.props.history.push('/login')
-        }}
+            if (!userId) {
+                this.props.history.push('/login')
+            }
+        }
 
 
         this.props.setUserProfileInfo(userId)
@@ -49,7 +50,8 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
         return <Profile {...this.props}
                         profile={this.props.profile}
                         userStatus={this.props.userStatus}
-                        setMyStatus={this.props.setMyStatus}/>
+                        setMyStatus={this.props.setMyStatus}
+                        isAuth={this.props.isAuth}/>
     }
 }
 

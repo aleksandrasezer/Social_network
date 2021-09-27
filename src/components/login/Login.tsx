@@ -8,6 +8,7 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {RootState} from "../../redux/redux-store";
 import s from "../common/formControls/FormControls.module.css";
+import st from './Login.module.css'
 
 type FormDataType = {
     email: string
@@ -39,13 +40,13 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 {props.error}
             </div>}
 
-            <div>
+            <div className={st.loginItem}>
                 <Field type={'checkbox'}
                        name={'rememberMe'}
                        component={'input'} /> remember me
             </div>
 
-            <div>
+            <div className={st.loginItem}>
                 <Button onClick={() => {}} disabled={false}>Login</Button>
             </div>
 
@@ -70,10 +71,18 @@ const Login = (props: LoginPropsType) => {
         return <Redirect to={"/profile"} />
     }
 
-    return <div>
-        <h1>Sign in here</h1>
+    return <div className={st.loginContainer}>
+        <h1 style={{fontWeight: 'bold'}}>Sign in here</h1>
 
         <LoginReduxForm onSubmit={onSubmit}/>
+
+        <div className={st.free}>
+            To log in get registered <a href='https://social-network.samuraijs.com/' target='_blank'>here</a><br/>
+            or use common test account credentials: <br/>
+            Email: <span style={{color: 'black'}}>free@samuraijs.com</span> <br/>
+            Password: <span style={{color: 'black'}}>free</span>
+        </div>
+
 
     </div>
 }
