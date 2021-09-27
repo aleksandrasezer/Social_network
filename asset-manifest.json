@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/Social_network/static/css/main.61d9e437.chunk.css",
-    "main.js": "/Social_network/static/js/main.ffb8ae39.chunk.js",
-    "main.js.map": "/Social_network/static/js/main.ffb8ae39.chunk.js.map",
+    "main.js": "/Social_network/static/js/main.12905029.chunk.js",
+    "main.js.map": "/Social_network/static/js/main.12905029.chunk.js.map",
     "runtime-main.js": "/Social_network/static/js/runtime-main.624d05e3.js",
     "runtime-main.js.map": "/Social_network/static/js/runtime-main.624d05e3.js.map",
-    "static/js/2.5fc061c2.chunk.js": "/Social_network/static/js/2.5fc061c2.chunk.js",
-    "static/js/2.5fc061c2.chunk.js.map": "/Social_network/static/js/2.5fc061c2.chunk.js.map",
+    "static/js/2.04840bdd.chunk.js": "/Social_network/static/js/2.04840bdd.chunk.js",
+    "static/js/2.04840bdd.chunk.js.map": "/Social_network/static/js/2.04840bdd.chunk.js.map",
     "static/js/3.96ff2327.chunk.js": "/Social_network/static/js/3.96ff2327.chunk.js",
     "static/js/3.96ff2327.chunk.js.map": "/Social_network/static/js/3.96ff2327.chunk.js.map",
     "index.html": "/Social_network/index.html",
     "static/css/main.61d9e437.chunk.css.map": "/Social_network/static/css/main.61d9e437.chunk.css.map",
-    "static/js/2.5fc061c2.chunk.js.LICENSE.txt": "/Social_network/static/js/2.5fc061c2.chunk.js.LICENSE.txt",
+    "static/js/2.04840bdd.chunk.js.LICENSE.txt": "/Social_network/static/js/2.04840bdd.chunk.js.LICENSE.txt",
     "static/media/morty.17d23175.png": "/Social_network/static/media/morty.17d23175.png",
     "static/media/spotify_icon.3b2959fb.png": "/Social_network/static/media/spotify_icon.3b2959fb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.624d05e3.js",
-    "static/js/2.5fc061c2.chunk.js",
+    "static/js/2.04840bdd.chunk.js",
     "static/css/main.61d9e437.chunk.css",
-    "static/js/main.ffb8ae39.chunk.js"
+    "static/js/main.12905029.chunk.js"
   ]
 }
