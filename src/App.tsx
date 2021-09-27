@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Switch, HashRouter, Route} from "react-router-dom";
 import HeadApiContainer from "./components/header/HeaderContainer";
 import Login from "./components/login/Login";
 import ProfileContainer from "./components/profile/ProfileContainer";
@@ -24,34 +24,29 @@ class App extends React.Component<AppPropsType> {
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
         if (!this.props.initialized) {
             return <Preload/>
         }
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="app_wrapper">
                     <HeadApiContainer/>
                     <Navbar/>
                     <div className="app_wrapper_content">
-
-                        <Route path='/' exact render={() => <ProfileContainer/>}/>
-
-                        <Route path='/dialogs' render={() => <Dialogs/>}/>
-
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-
-                        <Route path='/login' render={() => <Login/>}/>
-
-                        <Route path='/music' render={() => <Music/>}/>
-
-                        <Route path='/video' render={() => <Video />}/>
-
+                        <Switch>
+                            <Route path='/' exact render={() => <ProfileContainer/>}/>
+                            <Route path='/dialogs' render={() => <Dialogs/>}/>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
+                            <Route path='/music' render={() => <Music/>}/>
+                            <Route path='/video' render={() => <Video/>}/>
+                        </Switch>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }
@@ -59,4 +54,4 @@ class App extends React.Component<AppPropsType> {
 const mapStateToProps = (state: RootState) => ({initialized: state.app.initialized})
 
 
-export default connect(mapStateToProps,{initializeApp})(App)
+export default connect(mapStateToProps, {initializeApp})(App)

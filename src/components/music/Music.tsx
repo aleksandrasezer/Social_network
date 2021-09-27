@@ -12,11 +12,11 @@ export const Music = () => {
             </div>
 
             <div className={s.spotifyIcon}>
-                <Link
-                    to={{pathname: 'https://open.spotify.com/playlist/6Wx8e7k4P9gP8n1qFopWbV?si=NWuwTF9wSP-CSIa_UGEYoA&utm_source=native-share-menu&dl_branch=1'}}
+                <a
+                    href='https://open.spotify.com/playlist/6Wx8e7k4P9gP8n1qFopWbV?si=NWuwTF9wSP-CSIa_UGEYoA&utm_source=native-share-menu&dl_branch=1'
                     target="_blank">
                     <img src={spotify} alt='spotify icon'/>
-                </Link>
+                </a>
             </div>
 
         </div>
