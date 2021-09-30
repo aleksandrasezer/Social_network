@@ -9,7 +9,7 @@ import {RootState} from "../../../redux/redux-store";
 export const SearchUsersField = () => {
 
     const dispatch = useDispatch()
-    const {isFollowed} = useSelector((state: RootState) => state.usersPage)
+    const {isFollowed, nameSearch} = useSelector((state: RootState) => state.usersPage)
 
     const formik = useFormik({
         initialValues: {
@@ -22,7 +22,7 @@ export const SearchUsersField = () => {
 
     const showAllHandler = () => {
         dispatch(setNameSearch(''))
-        dispatch(setIsFollowed(null))
+        dispatch(setIsFollowed(''))
 
     }
 
@@ -49,7 +49,7 @@ export const SearchUsersField = () => {
                     />
                     <Button>Search</Button>
                 </form>
-                <Button onClick={showAllHandler}>Show all</Button>
+                <Button onClick={showAllHandler} disabled={isFollowed === '' && nameSearch === ''}>Show all</Button>
             </div>
         </div>
     )

@@ -77,7 +77,7 @@ const Login = (props: LoginPropsType) => {
         <LoginReduxForm onSubmit={onSubmit}/>
 
         <div className={st.free}>
-            To log in get registered <a href='https://social-network.samuraijs.com/' target='_blank'>here</a><br/>
+            To log in get registered <a href='https://social-network.samuraijs.com/' target='_blank' rel="noreferrer">here</a><br/>
             or use common test account credentials: <br/>
             Email: <span style={{color: 'black'}}>free@samuraijs.com</span> <br/>
             Password: <span style={{color: 'black'}}>free</span>

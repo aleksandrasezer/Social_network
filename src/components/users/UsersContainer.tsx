@@ -21,24 +21,20 @@ type UsersContainerPropsType = {
     totalUsersCount: number
     pageSize: number
     isFetching: boolean
-    isFollowed: null | boolean
+    isFollowed: '' | boolean
     nameSearch: string
     followingInProgress: number[]
     followUser: (id: number) => void
     unfollowUser: (id: number) => void
     setCurrentPage: (pageNumber: number) => void
-    setUsersFromServer: (currentPage: number, pageSize: number) => void
+    setUsersFromServer: (currentPage: number, pageSize: number, nameSearch: string, isFollowed: '' | boolean) => void
 }
 
 class UsersContainer extends React.Component<UsersContainerPropsType> {
 
-    componentDidMount() {
-        this.props.setUsersFromServer(this.props.currentPage, this.props.pageSize)
-    }
-
     onPageChanged = (selectedItem: { selected: number}) => {
         this.props.setCurrentPage(selectedItem.selected)
-        this.props.setUsersFromServer(selectedItem.selected,this.props.pageSize)
+        this.props.setUsersFromServer(selectedItem.selected,this.props.pageSize,this.props.nameSearch,this.props.isFollowed)
     }
     onNextPage = () => {
         this.props.setCurrentPage(this.props.currentPage + 1)

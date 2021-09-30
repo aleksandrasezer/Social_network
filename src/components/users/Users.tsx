@@ -14,7 +14,7 @@ type UsersPropsType = {
     followingInProgress: number[]
     isFetching: boolean
     nameSearch: string
-    isFollowed: null | boolean
+    isFollowed: '' | boolean
     onPageChanged: (selectedItem: { selected: number }) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
@@ -41,7 +41,8 @@ export const Users = ({currentPage, pageSize, totalUsersCount, nameSearch,isFoll
         <SearchUsersField />
 
         <div className={s.usersList}>
-            {props.users.map(u => <User id={u.id}
+            {props.users.map(u => <User key={u.id}
+                                        id={u.id}
                                         photos={u.photos}
                                         followed={u.followed}
                                         followingInProgress={props.followingInProgress}

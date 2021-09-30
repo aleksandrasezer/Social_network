@@ -17,7 +17,7 @@ export type UsersPageType = {
     isFetching: boolean
     followingInProgress: number[]
     nameSearch: string
-    isFollowed: null | boolean
+    isFollowed: '' | boolean
 }
 
 let initialState: UsersPageType = {
@@ -28,7 +28,7 @@ let initialState: UsersPageType = {
     isFetching: false,
     followingInProgress: [],
     nameSearch: '',
-    isFollowed: null,
+    isFollowed: '',
 }
 
 export const usersReducer = (state: UsersPageType = initialState, action: UsersActionsType) => {
@@ -67,7 +67,7 @@ export const setCurrentPage = (pageNumber: number) => ({type: 'USERS/SET-CURRENT
 const setTotalUsersCount = (totalUsers: number) => ({type: 'USERS/SET-TOTAL-USERS-COUNT', totalUsers}) as const
 const setIsFetching = (isFetching: boolean) => ({type: 'USERS/SET-IS-FETCHING', isFetching}) as const
 export const setNameSearch = (nameSearch: string) => ({type: 'USERS/SET-NAME-SEARCH', nameSearch}) as const
-export const setIsFollowed = (isFollowed: null | boolean) => ({type: 'USERS/SET-IS-FOLLOWED', isFollowed}) as const
+export const setIsFollowed = (isFollowed: '' | boolean) => ({type: 'USERS/SET-IS-FOLLOWED', isFollowed}) as const
 const setFollowingProgress = (inProgress: boolean, userId: number) => ({
     type: 'USERS/SET-FOLLOWING-PROGRESS',
     inProgress,
@@ -75,7 +75,7 @@ const setFollowingProgress = (inProgress: boolean, userId: number) => ({
 }) as const
 
 //thunk
-export const setUsersFromServer = (currentPage: number, pageSize: number, nameSearch?: string, isFollowed?: null | boolean): AppThunk => {
+export const setUsersFromServer = (currentPage: number, pageSize: number, nameSearch: string, isFollowed: '' | boolean): AppThunk => {
     return async (dispatch) => {
         dispatch(setIsFetching(true))
         const usersData = await usersAPI.getUsers(currentPage, pageSize, nameSearch, isFollowed)
