@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Social_network/static/css/main.90c430f2.chunk.css",
-    "main.js": "/Social_network/static/js/main.fe499143.chunk.js",
-    "main.js.map": "/Social_network/static/js/main.fe499143.chunk.js.map",
-    "runtime-main.js": "/Social_network/static/js/runtime-main.df06533e.js",
-    "runtime-main.js.map": "/Social_network/static/js/runtime-main.df06533e.js.map",
-    "static/js/2.af1a0482.chunk.js": "/Social_network/static/js/2.af1a0482.chunk.js",
-    "static/js/2.af1a0482.chunk.js.map": "/Social_network/static/js/2.af1a0482.chunk.js.map",
-    "static/js/3.aa9d22de.chunk.js": "/Social_network/static/js/3.aa9d22de.chunk.js",
-    "static/js/3.aa9d22de.chunk.js.map": "/Social_network/static/js/3.aa9d22de.chunk.js.map",
+    "main.css": "/Social_network/static/css/main.10dfabd6.chunk.css",
+    "main.js": "/Social_network/static/js/main.d3c752b5.chunk.js",
+    "main.js.map": "/Social_network/static/js/main.d3c752b5.chunk.js.map",
+    "runtime-main.js": "/Social_network/static/js/runtime-main.8c495206.js",
+    "runtime-main.js.map": "/Social_network/static/js/runtime-main.8c495206.js.map",
+    "static/js/2.3b706c29.chunk.js": "/Social_network/static/js/2.3b706c29.chunk.js",
+    "static/js/2.3b706c29.chunk.js.map": "/Social_network/static/js/2.3b706c29.chunk.js.map",
+    "static/js/3.8a16f123.chunk.js": "/Social_network/static/js/3.8a16f123.chunk.js",
+    "static/js/3.8a16f123.chunk.js.map": "/Social_network/static/js/3.8a16f123.chunk.js.map",
     "index.html": "/Social_network/index.html",
-    "static/css/main.90c430f2.chunk.css.map": "/Social_network/static/css/main.90c430f2.chunk.css.map",
-    "static/js/2.af1a0482.chunk.js.LICENSE.txt": "/Social_network/static/js/2.af1a0482.chunk.js.LICENSE.txt",
+    "static/css/main.10dfabd6.chunk.css.map": "/Social_network/static/css/main.10dfabd6.chunk.css.map",
+    "static/js/2.3b706c29.chunk.js.LICENSE.txt": "/Social_network/static/js/2.3b706c29.chunk.js.LICENSE.txt",
     "static/media/bryan_avatar.f39f3345.jpg": "/Social_network/static/media/bryan_avatar.f39f3345.jpg",
     "static/media/header.18c2a620.png": "/Social_network/static/media/header.18c2a620.png",
     "static/media/morty.17d23175.png": "/Social_network/static/media/morty.17d23175.png",
     "static/media/spotify_icon.3b2959fb.png": "/Social_network/static/media/spotify_icon.3b2959fb.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.df06533e.js",
-    "static/js/2.af1a0482.chunk.js",
-    "static/css/main.90c430f2.chunk.css",
-    "static/js/main.fe499143.chunk.js"
+    "static/js/runtime-main.8c495206.js",
+    "static/js/2.3b706c29.chunk.js",
+    "static/css/main.10dfabd6.chunk.css",
+    "static/js/main.d3c752b5.chunk.js"
   ]
 }
