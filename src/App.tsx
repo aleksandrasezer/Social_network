@@ -13,6 +13,7 @@ import {RootState} from "./redux/redux-store";
 import {Preload} from "./components/common/preload/Preload";
 import {Music} from "./components/music/Music";
 import {Video} from "./components/video/Video";
+import {Chat} from "./components/chat/Chat";
 
 type AppPropsType = {
     initializeApp: () => void
@@ -42,6 +43,7 @@ class App extends React.Component<AppPropsType> {
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/login' render={() => <Login/>}/>
                             <Route path='/music' render={() => <Music/>}/>
+                            <Route path='/chat' render={() => <Chat/>}/>
                             <Route path='/video' render={() => <Video/>}/>
                         </Switch>
                     </div>

@@ -15,6 +15,7 @@ type UserPropsType = {
 }
 
 export const User = (props: UserPropsType) => {
+    console.log(props.followingInProgress)
     return (
         <div key={props.id} className={s.userBody}>
             <div className={s.avatarAndFollow}>
@@ -30,8 +31,7 @@ export const User = (props: UserPropsType) => {
                     {props.followed
                         ? <Button
                             disabled={props.followingInProgress.some(id => id === props.id)}
-                            onClick={() => { debugger
-                                props.unfollow(props.id) }}>Unfollow</Button>
+                            onClick={() => {props.unfollow(props.id) }}>Unfollow</Button>
                         : <Button
                             disabled={props.followingInProgress.some(id => id === props.id)}
                             onClick={() => { props.follow(props.id) }}>Follow</Button>}

@@ -24,6 +24,12 @@ function Navbar() {
         </div>
 
         <div className={s.item}>
+            <NavLink activeClassName={s.activeLink} to='/chat'>
+                <div className={s.linkName}>Chat</div>
+            </NavLink>
+        </div>
+
+        <div className={s.item}>
             <NavLink activeClassName={s.activeLink} to='/music'>
                 <div className={s.linkName}>Music</div>
             </NavLink>
@@ -34,6 +40,7 @@ function Navbar() {
                 <div className={s.linkName}>Video</div>
             </NavLink>
         </div>
+
     </div>
 }
 
