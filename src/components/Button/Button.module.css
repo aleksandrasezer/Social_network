@@ -8,6 +8,7 @@
     border-bottom: 2px solid darkslateblue;
     border-right: 2px solid darkslateblue;
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    cursor: pointer;
 }
 .buttonStyle button:active {
     background-color: cornflowerblue;
@@ -21,5 +22,9 @@
 }
 .buttonStyle button:disabled {
     background-color: lightgrey;
-    border-color: darkgray;
+    border-top: 2px solid darkgrey;
+    border-left: 2px solid darkgrey;
+    border-bottom: 2px solid grey;
+    border-right: 2px solid grey;
+    cursor: auto;
 }

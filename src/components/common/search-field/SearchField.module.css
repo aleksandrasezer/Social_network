@@ -1,3 +1,12 @@
+.searchContainer {
+    margin-top: 25px;
+    padding-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: space-between;
+}
 .searchContainer form {
     display: inline-block;
 }
@@ -7,4 +16,15 @@
 .searchContainer input {
     outline-color: cornflowerblue;
     height: 20px;
+}
+.followed button {
+    margin: 0;
+}
+.followedButton button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.notFollowedButton button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }

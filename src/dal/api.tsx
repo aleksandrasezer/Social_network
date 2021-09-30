@@ -26,8 +26,8 @@ export const profileAPI = {
 }
 
 export const usersAPI = {
-    getUsers(currentPage: number, pageSize: number, nameSearch?: string) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}&term=${nameSearch}`)
+    getUsers(currentPage: number, pageSize: number, nameSearch?: string, isFollowed?: null | boolean) {
+    return instance.get(`users?page=${currentPage}&count=${pageSize}&term=${nameSearch}&friend=${isFollowed}`)
         .then(response => response.data)
     },
 }

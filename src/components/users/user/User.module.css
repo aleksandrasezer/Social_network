@@ -18,6 +18,10 @@
 .avatarAndFollow {
     text-align: center;
 }
+.avatarAndFollow button {
+    padding: 6px;
+    font-size: 1em;
+}
 .nameSurname {
     float: left;
 }

@@ -33,3 +33,6 @@ export const getFollowingInProgress = (state: RootState) => {
 export const nameSearch = (state: RootState) => {
     return state.usersPage.nameSearch;
 }
+export const isFollowed = (state: RootState) => {
+    return state.usersPage.isFollowed;
+}

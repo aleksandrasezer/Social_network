@@ -14,6 +14,7 @@ type UsersPropsType = {
     followingInProgress: number[]
     isFetching: boolean
     nameSearch: string
+    isFollowed: null | boolean
     onPageChanged: (selectedItem: { selected: number }) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
@@ -22,32 +23,20 @@ type UsersPropsType = {
     onPrevPage: () => void
 }
 
-export const Users = (props: UsersPropsType) => {
+export const Users = ({currentPage, pageSize, totalUsersCount, nameSearch,isFollowed, ...props}: UsersPropsType) => {
 
     const dispatch = useDispatch()
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pagesCount = Math.ceil(totalUsersCount / pageSize)
 
     useEffect(() => {
-            dispatch(setUsersFromServer(props.currentPage, props.pageSize, props.nameSearch))
+            dispatch(setUsersFromServer(currentPage, pageSize, nameSearch, isFollowed))
         },
-        [dispatch,props.pageSize,props.currentPage,props.nameSearch])
+        [dispatch,pageSize,currentPage,nameSearch,isFollowed])
 
     return <div className={s.usersPage}>
 
-        <div className={s.paginateContainer}>
-            <PaginateBoxView previousLabel={"<"}
-                         nextLabel={">"}
-                         breakLabel={"..."}
-                         breakClassName={"break-me"}
-                         pageCount={pagesCount}
-                         pageRangeDisplayed={5}
-                         marginPagesDisplayed={2}
-                         onPageChange={props.onPageChanged}
-                         containerClassName={`${s.pagination}`}
-            // subContainerClassName={"pages pagination"}
-                              activeClassName={`${s.active}`}/>
-        </div>
+
 
         <SearchUsersField />
 
@@ -59,6 +48,20 @@ export const Users = (props: UsersPropsType) => {
                                         unfollow={props.unfollow}
                                         follow={props.follow}
                                         name={u.name}/>)}
+        </div>
+
+        <div className={s.paginateContainer}>
+            <PaginateBoxView previousLabel={"<"}
+                             nextLabel={">"}
+                             breakLabel={"..."}
+                             breakClassName={"break-me"}
+                             pageCount={pagesCount}
+                             pageRangeDisplayed={5}
+                             marginPagesDisplayed={2}
+                             onPageChange={props.onPageChanged}
+                             containerClassName={`${s.pagination}`}
+                // subContainerClassName={"pages pagination"}
+                             activeClassName={`${s.active}`}/>
         </div>
     </div>
 }
