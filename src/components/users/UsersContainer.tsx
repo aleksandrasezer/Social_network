@@ -11,7 +11,7 @@ import {
     getIsFetching,
     getPageSize,
     getTotalUsersCount,
-    getUsers
+    getUsers, nameSearch
 } from "../../redux/users-selectors";
 import {UserType} from "../../types/types";
 
@@ -21,6 +21,7 @@ type UsersContainerPropsType = {
     totalUsersCount: number
     pageSize: number
     isFetching: boolean
+    nameSearch: string
     followingInProgress: number[]
     followUser: (id: number) => void
     unfollowUser: (id: number) => void
@@ -56,6 +57,7 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
                    totalUsersCount={this.props.totalUsersCount}
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
+                   nameSearch={this.props.nameSearch}
                    follow={this.props.followUser}
                    unfollow={this.props.unfollowUser}
                    followingInProgress={this.props.followingInProgress}
@@ -75,6 +77,7 @@ let mapStateToProps = (state: RootState) => {
         pageSize: getPageSize(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
+        nameSearch: nameSearch(state)
     }
 }
 

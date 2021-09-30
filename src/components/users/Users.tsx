@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {setUsersFromServer} from "../../redux/users-reducer";
 import PaginateBoxView from "react-paginate";
 import s from './Users.module.css'
+import {SearchUsersField} from "../common/search-field/SearchField";
 
 type UsersPropsType = {
     users: UserType[]
@@ -12,6 +13,7 @@ type UsersPropsType = {
     currentPage: number
     followingInProgress: number[]
     isFetching: boolean
+    nameSearch: string
     onPageChanged: (selectedItem: { selected: number }) => void
     follow: (id: number) => void
     unfollow: (id: number) => void
@@ -27,9 +29,9 @@ export const Users = (props: UsersPropsType) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
     useEffect(() => {
-            dispatch(setUsersFromServer(props.currentPage, props.pageSize))
+            dispatch(setUsersFromServer(props.currentPage, props.pageSize, props.nameSearch))
         },
-        [dispatch,props.pageSize,props.currentPage])
+        [dispatch,props.pageSize,props.currentPage,props.nameSearch])
 
     return <div className={s.usersPage}>
 
@@ -46,6 +48,8 @@ export const Users = (props: UsersPropsType) => {
             // subContainerClassName={"pages pagination"}
                               activeClassName={`${s.active}`}/>
         </div>
+
+        <SearchUsersField />
 
         <div className={s.usersList}>
             {props.users.map(u => <User id={u.id}

@@ -26,8 +26,8 @@ export const profileAPI = {
 }
 
 export const usersAPI = {
-    getUsers(currentPage: number, pageSize: number) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+    getUsers(currentPage: number, pageSize: number, nameSearch?: string) {
+    return instance.get(`users?page=${currentPage}&count=${pageSize}&term=${nameSearch}`)
         .then(response => response.data)
     },
 }

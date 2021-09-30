@@ -1,0 +1,10 @@
+.searchContainer form {
+    display: inline-block;
+}
+.searchContainer button {
+    margin-left: 5px;
+}
+.searchContainer input {
+    outline-color: cornflowerblue;
+    height: 20px;
+}

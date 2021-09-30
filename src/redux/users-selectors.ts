@@ -30,3 +30,6 @@ export const getIsFetching = (state: RootState) => {
 export const getFollowingInProgress = (state: RootState) => {
     return state.usersPage.followingInProgress;
 }
+export const nameSearch = (state: RootState) => {
+    return state.usersPage.nameSearch;
+}
