@@ -45,7 +45,7 @@ class App extends React.Component<AppPropsType> {
                         <Switch>
                             <Route path='/' exact render={() => <SuspendedProfile/>}/>
                             <Route path='/dialogs' render={() => <SuspendedDialogs/>}/>
-                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/profile/:userId?' render={() => <SuspendedProfile/>}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/login' render={() => <Login/>}/>
                             <Route path='/music' render={() => <Music/>}/>

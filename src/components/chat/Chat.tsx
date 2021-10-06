@@ -3,13 +3,15 @@ import s from './Chat.module.css'
 import MessageForm, {MessageFormDataType} from "../dialogs/messages/message/newMessage/NewMessage";
 import {ChatMessage} from "./chat-message/ChatMessage";
 
-const socket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
+let socket: WebSocket | null = null
 
 const Chat:React.FC = () => {
 
     const [messages, setMessages] = useState<ChatMessageResponseType[]>([])
 
     const openSocket = () => {
+        socket?.close()
+        socket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
         socket.addEventListener('message',  (resp) => {
             setMessages((prevMessages) => [...prevMessages,...JSON.parse(resp.data)])
         })
@@ -19,7 +21,7 @@ const Chat:React.FC = () => {
         if (!formData) {
             return
         }
-        socket.send(formData.message)
+        socket?.send(formData.message)
     }
 
     useEffect(() => openSocket(), [])
