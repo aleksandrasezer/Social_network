@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import s from './Chat.module.css'
-import MessageForm from "../dialogs/messages/message/newMessage/NewMessage";
+import MessageForm, {MessageFormDataType} from "../dialogs/messages/message/newMessage/NewMessage";
 import {ChatMessage} from "./chat-message/ChatMessage";
 
 const socket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
 
-export const Chat = () => {
+const Chat:React.FC = () => {
 
     const [messages, setMessages] = useState<ChatMessageResponseType[]>([])
 
@@ -13,6 +13,13 @@ export const Chat = () => {
         socket.addEventListener('message',  (resp) => {
             setMessages((prevMessages) => [...prevMessages,...JSON.parse(resp.data)])
         })
+    }
+
+    const onAddMessage = (formData: MessageFormDataType) => {
+        if (!formData) {
+            return
+        }
+        socket.send(formData.message)
     }
 
     useEffect(() => openSocket(), [])
@@ -28,11 +35,13 @@ export const Chat = () => {
                 {chatMessages}
             </div>
 
-            <MessageForm onSubmit={() => alert('hi')}/>
+            <MessageForm onSubmit={onAddMessage}/>
 
         </div>
     )
 }
+
+export default Chat
 
 type ChatMessageResponseType = {
     message: string

@@ -11,7 +11,7 @@ type DialogsPropsType = {
     addMessageAC: (message: string) => void
 }
 
-function Dialogs(props: DialogsPropsType) {
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name}/>)
 
