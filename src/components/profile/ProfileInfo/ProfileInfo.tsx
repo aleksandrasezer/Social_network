@@ -9,9 +9,15 @@ type ProfileInfoPropsType = {
     profile: ProfileType | null
     userStatus: string
     setMyStatus: (newStatus: string) => void
+    uploadProfilePic: (photo: File) => void
+    isOwner: boolean
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
+
+    const onChangePhotoHandler = (e: any) => {
+        e.target.files.length && props.uploadProfilePic(e.target.files[0])
+    }
 
     return <>
 
@@ -22,6 +28,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
 
                 <div className={s.profilePicBox}>
                     <img src={props.profile.photos.large || avatar} alt='profile_avatar'/>
+                    {props.isOwner && <input type='file' onChange={onChangePhotoHandler}/>}
                 </div>
 
                 <div className={s.profileInfo}>

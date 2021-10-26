@@ -9,7 +9,9 @@ type ProfilePropsType = {
     profile: ProfileType | null
     userStatus: string
     setMyStatus: (newStatus: string) => void
+    uploadProfilePic: (photo: File) => void
     isAuth: boolean
+    isOwner: boolean
 }
 
 function Profile(props: ProfilePropsType) {
@@ -23,8 +25,10 @@ function Profile(props: ProfilePropsType) {
 
             <div className={s.profile}>
                 <ProfileInfo profile={props.profile}
+                             isOwner={props.isOwner}
                              userStatus={props.userStatus}
-                             setMyStatus={props.setMyStatus}/>
+                             setMyStatus={props.setMyStatus}
+                             uploadProfilePic={props.uploadProfilePic}/>
             </div>
             <div>
                 <MyPostsContainer />

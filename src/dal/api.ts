@@ -20,9 +20,17 @@ export const profileAPI = {
         return instance.get(`/profile/status/${userId}`)
     },
     setMyStatus(newStatus: string) {
-
         return instance.put('profile/status', {status: newStatus})
     },
+    uploadPicture(newPicture: File) {
+        const formData = new FormData()
+        formData.append("image", newPicture)
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
 }
 
 export const usersAPI = {
@@ -54,5 +62,6 @@ export const followAPI = {
 
     },
 }
+
 
 

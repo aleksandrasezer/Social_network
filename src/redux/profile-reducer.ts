@@ -1,14 +1,7 @@
 import {v1} from "uuid";
 import {profileAPI} from "../dal/api";
-import {PostType, ProfileType} from "../types/types";
+import {PhotosType, PostType, ProfileType} from "../types/types";
 import {AppThunk} from "./redux-store";
-
-export type ProfileActionsType =
-    ReturnType<typeof deletePostAC>
-    | ReturnType<typeof setUsersProfile>
-    | ReturnType<typeof setUsersStatus>
-    | ReturnType<typeof addPostAC>
-    | ReturnType<typeof addLikeAC>
 
 let initialState = {
     posts: [
@@ -33,6 +26,9 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             return {...state, profile: action.profile}
         case 'PROFILE/SET-USERS-STATUS':
             return {...state, userStatus: action.status}
+        case 'PROFILE/UPLOAD-PHOTO-SUCCESS':
+            //@ts-ignore
+            return {...state, profile: {...state.profile, photos: action.photos}}
         case 'PROFILE/ADD-LIKE':
             return {
                 ...state,
@@ -61,6 +57,7 @@ export const addPostAC = (newPostText: string) => ({type: 'PROFILE/ADD-POST', ne
 export const addLikeAC = (id: string) => ({type: 'PROFILE/ADD-LIKE', id} as const)
 const setUsersProfile = (profile: ProfileType | null) => ({type: 'PROFILE/SET-PROFILE', profile} as const)
 const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', status} as const)
+const uploadPhotoSuccess = (photos: PhotosType) => ({type: 'PROFILE/UPLOAD-PHOTO-SUCCESS', photos} as const)
 
 //thunk-creators
 export const setUserProfileInfo = (userId: string): AppThunk => async (dispatch) => {
@@ -79,4 +76,19 @@ export const setMyStatus = (newStatus: string): AppThunk => async (dispatch) => 
         dispatch(setUsersStatus(newStatus))
     }
 }
+export const uploadProfilePic = (profilePic: File): AppThunk => async (dispatch) => {
+    const resp = await profileAPI.uploadPicture(profilePic)
+    if (resp.status === 200) {
+       dispatch(uploadPhotoSuccess(resp.data.data.photos))
+    }
+}
+
+//types
+export type ProfileActionsType =
+    ReturnType<typeof deletePostAC>
+    | ReturnType<typeof setUsersProfile>
+    | ReturnType<typeof setUsersStatus>
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof addLikeAC>
+    | ReturnType<typeof uploadPhotoSuccess>
 

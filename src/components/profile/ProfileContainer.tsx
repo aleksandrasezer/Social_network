@@ -1,7 +1,7 @@
 import React from "react";
 import {RootState} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {setMyStatus, setUserProfileInfo, setUserStatus} from "../../redux/profile-reducer";
+import {setMyStatus, setUserProfileInfo, setUserStatus, uploadProfilePic} from "../../redux/profile-reducer";
 import Profile from "./Profile";
 import {RouteComponentProps, withRouter} from "react-router"
 import {compose} from "redux";
@@ -21,6 +21,7 @@ type mapDispatchToPropsType = {
     setUserProfileInfo: (userId: string) => void
     setUserStatus: (userId: string) => void
     setMyStatus: (newStatus: string) => void
+    uploadProfilePic: (photo: File) => void
 }
 type ProfilePropsType = mapStateToPropsType & mapDispatchToPropsType
 
@@ -53,6 +54,8 @@ class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
     render() {
         return <Profile {...this.props}
+                        uploadProfilePic={this.props.uploadProfilePic}
+                        isOwner={!this.props.match.params.userId}
                         profile={this.props.profile}
                         userStatus={this.props.userStatus}
                         setMyStatus={this.props.setMyStatus}
@@ -74,7 +77,7 @@ let mapStateToProps = (state: RootState) => {
 
 export default compose<React.ComponentType>(
     withRouter,
-    connect(mapStateToProps, {setUserProfileInfo, setUserStatus, setMyStatus}),
+    connect(mapStateToProps, {setUserProfileInfo, setUserStatus, setMyStatus, uploadProfilePic}),
 //    withAuthRedirect,
 )(ProfileContainer)
 
