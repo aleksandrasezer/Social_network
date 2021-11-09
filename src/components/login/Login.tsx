@@ -79,8 +79,8 @@ const Login = (props: LoginPropsType) => {
         <div className={st.free}>
             To log in get registered <a href='https://social-network.samuraijs.com/' target='_blank' rel="noreferrer">here</a><br/>
             or use common test account credentials: <br/>
-            Email: <span style={{color: 'black'}}>free@samuraijs.com</span> <br/>
-            Password: <span style={{color: 'black'}}>free</span>
+            Email: <span style={{color: 'black'}}>korelskaia@gmail.com</span> <br/>
+            Password: <span style={{color: 'black'}}>s8MjksG_Fus_GdY</span>
         </div>
 
 
