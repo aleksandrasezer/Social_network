@@ -1,33 +1,30 @@
 import React from "react";
 import s from "./Dialogs.module.css"
-import Messages from "./messages/Messages";
+import {Messages} from "./messages/Messages";
 import Dialog from "./Dialog/Dialog";
-import {DialogType, MessageType} from "../../types/types";
+import {DialogType} from "../../types/types";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/redux-store";
+import {addMessageAC} from "../../redux/dialogs-reducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-type DialogsPropsType = {
-    messages: MessageType[]
-    dialogs: DialogType[]
-    newMessageText: string
-    addMessageAC: (message: string) => void
-}
+const Dialogs: React.FC = () => {
 
-const Dialogs: React.FC<DialogsPropsType> = (props) => {
+    const {messages, dialogs} = useSelector((state:RootState) => state.dialogsPage)
+    const dispatch = useDispatch()
 
-    let dialogsItems = props.dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name}/>)
+    const dialogsItems = dialogs.map((el: DialogType) => <Dialog key={el.id} id={el.id} name={el.name}/>)
 
     return (
-
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsItems}
             </div>
             <div className={s.messages}>
-                <Messages messages={props.messages}
-                          newMessageText={props.newMessageText}
-                          addMessage={props.addMessageAC}/>
+                <Messages messages={messages}
+                          addMessage={(message: string) => dispatch(addMessageAC(message))}/>
             </div>
         </div>
     )
 }
-
-export default Dialogs;
+export default withAuthRedirect(Dialogs);

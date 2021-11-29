@@ -12,13 +12,12 @@ import {Music} from "./components/music/Music";
 import {Video} from "./components/video/Video";
 import {withSuspense} from "./hoc/withSuspense";
 import {Header} from "./components/header/Header";
+import Dialogs from "./components/dialogs/Dialogs";
 
-const DialogsContainer = React.lazy(() => import('./components/dialogs/DialogsContainer'))
-const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'))
+const Profile = React.lazy(() => import('./components/profile/Profile'))
 const ChatPage = React.lazy(() => import('./components/chat/Chat'))
 
-const SuspendedDialogs = withSuspense(DialogsContainer)
-const SuspendedProfile = withSuspense(ProfileContainer)
+const SuspendedProfile = withSuspense(Profile)
 const SuspendedChatPage = withSuspense(ChatPage)
 
 export const App = () => {
@@ -40,7 +39,7 @@ export const App = () => {
                 <div className="app_wrapper_content">
                     <Switch>
                         <Route path='/' exact render={() => <SuspendedProfile/>}/>
-                        <Route path='/dialogs' render={() => <SuspendedDialogs/>}/>
+                        <Route path='/dialogs' render={() => <Dialogs/>}/>
                         <Route path='/profile/:userId?' render={() => <SuspendedProfile/>}/>
                         <Route path='/users' render={() => <UsersContainer/>}/>
                         <Route path='/login' render={() => <Login/>}/>

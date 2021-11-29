@@ -1,12 +1,7 @@
 import React from "react";
 import s from "./Message.module.css"
 
-type MessagePropsType = {
-    id: string
-    message: string
-}
-
-function Message(props: MessagePropsType) {
+export const Message = (props: MessagePropsType) => {
     return (
         <div className={s.message}>
             {props.message}
@@ -14,4 +9,9 @@ function Message(props: MessagePropsType) {
     )
 }
 
-export default Message;
+//types
+type MessagePropsType = {
+    id: string
+    message: string
+}
+

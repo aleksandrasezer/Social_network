@@ -5,15 +5,15 @@ import {ChatMessage} from "./chat-message/ChatMessage";
 
 let socket: WebSocket | null = null
 
-const Chat:React.FC = () => {
+const Chat: React.FC = () => {
 
     const [messages, setMessages] = useState<ChatMessageResponseType[]>([])
 
     const openSocket = () => {
         socket?.close()
         socket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
-        socket.addEventListener('message',  (resp) => {
-            setMessages((prevMessages) => [...prevMessages,...JSON.parse(resp.data)])
+        socket.addEventListener('message', (resp) => {
+            setMessages((prevMessages) => [...prevMessages, ...JSON.parse(resp.data)])
         })
     }
 
@@ -30,21 +30,19 @@ const Chat:React.FC = () => {
                                                       photo={m.photo}
                                                       userName={m.userName}
                                                       message={m.message}/>)
-
     return (
         <div className={s.chatContainer}>
             <div className={s.messages}>
                 {chatMessages}
             </div>
-
             <MessageForm onSubmit={onAddMessage}/>
-
         </div>
     )
 }
 
 export default Chat
 
+//types
 type ChatMessageResponseType = {
     message: string
     photo: string

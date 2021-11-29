@@ -13,30 +13,23 @@ export const Header = () => {
 
     return (
         <div className={s.header}>
-
             <img src={headerPic}
                  alt="logo"/>
-
             <div className={s.loginBlock}>
                 {data.isAuth
-
                     ? <div>
                         <NavLink to="/profile">
                             <div className={s.userName}>
-                            {data.login}
-                        </div>
+                                {data.login}
+                            </div>
                         </NavLink>
-
                         <div className={s.logOut} onClick={() => dispatch(logout())}>
                             Log out
                         </div>
                     </div>
-
                     : <NavLink to={'/login'}>Login</NavLink>
-
                 }
             </div>
-
         </div>
     )
 }
