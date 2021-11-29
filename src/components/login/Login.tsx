@@ -3,7 +3,7 @@ import {Field,InjectedFormProps, reduxForm} from "redux-form";
 import {Button} from "../Button/Button";
 import {maxLengthCreator, required} from "../../validators/validators";
 import {Input} from "../common/formControls/FormControls";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {RootState} from "../../redux/redux-store";
@@ -56,18 +56,17 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
-type LoginPropsType = {
-    isAuth: boolean
-    login: (email: string, password: string, rememberMe: boolean) => void
-}
 
-const Login = (props: LoginPropsType) => {
+export const Login = () => {
+
+    const isAuth = useSelector<RootState,boolean>(state => state.auth.isAuth)
+    const dispatch = useDispatch()
 
     const onSubmit = (formData: FormDataType) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        dispatch(login(formData.email, formData.password, formData.rememberMe))
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"/profile"} />
     }
 
@@ -86,11 +85,3 @@ const Login = (props: LoginPropsType) => {
 
     </div>
 }
-
-const mapStateToProps = (state: RootState) => {
-    return {
-        isAuth: state.auth.isAuth
-    }
-}
-
- export default connect(mapStateToProps, {login})(Login)
