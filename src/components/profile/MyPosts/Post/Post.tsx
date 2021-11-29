@@ -5,14 +5,7 @@ import {PostType, ProfileType} from "../../../../types/types";
 import {Likes} from "../../../common/likes/Likes";
 import avatar from '../../../../assets/images/bryan_avatar.jpg'
 
-
-type PostPropsType = PostType & {
-    deletePost: (id: string) => void
-    addLike: (id: string) => void
-    profile: ProfileType | null
-}
-
-function Post(props: PostPropsType) {
+export const Post = (props: PostPropsType) => {
 
     const userAvatar = props.profile?.photos.large ?? avatar
 
@@ -27,10 +20,8 @@ function Post(props: PostPropsType) {
                 </div>
             </div>
             <div className={s.likeArea}>
-
                 <Likes likesCount={props.likesCount}
                        onLike={() => props.addLike(props.id)}/>
-
                 <Button onClick={() => props.deletePost(props.id)}
                         disabled={false}> Delete </Button>
             </div>
@@ -39,4 +30,9 @@ function Post(props: PostPropsType) {
 
 }
 
-export default Post;
+//types
+type PostPropsType = PostType & {
+    deletePost: (id: string) => void
+    addLike: (id: string) => void
+    profile: ProfileType | null
+}

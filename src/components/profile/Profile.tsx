@@ -1,12 +1,12 @@
 import React, {useEffect} from "react";
 import s from "./Profile.module.css"
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/redux-store";
 import {setMyStatus, setUserProfileInfo, setUserStatus, uploadProfilePic} from "../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router";
+import {MyPosts} from "./MyPosts/MyPosts";
 
 function Profile(props: ProfilePropsType) {
 
@@ -44,7 +44,7 @@ function Profile(props: ProfilePropsType) {
                              uploadProfilePic={(photo:File) => dispatch(uploadProfilePic(photo))}/>
             </div>
             <div>
-                <MyPostsContainer />
+                <MyPosts />
             </div>
         </div>
     )

@@ -1,44 +1,33 @@
 import React from "react";
 import s from "./MyPosts.module.css"
-import Post from "./Post/Post";
-import {PostType, ProfileType} from "../../../types/types";
+import {Post} from "./Post/Post";
 import NewPostForm, {PostFormDataType} from "./newPost/NewPostForm";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../redux/redux-store";
+import {addLikeAC, addPostAC, deletePostAC} from "../../../redux/profile-reducer";
 
-type MyPostsPropsType = {
-    posts: PostType[]
-    deletePostAC: (id: string) => void
-    addPostAC: (newPostText: string) => void
-    addLikeAC: (id: string) => void
-    profile: ProfileType | null
-}
+export const MyPosts = () => {
 
-function MyPosts(props: MyPostsPropsType) {
+    const {posts, profile} = useSelector((state: RootState) => state.profilePage)
+    const dispatch = useDispatch()
 
-    //posts list
-    let myPostsItems = props.posts.map((el) => <Post key={el.id}
-                                                     id={el.id}
-                                                     postText={el.postText}
-                                                     likesCount={el.likesCount}
-                                                     deletePost={props.deletePostAC}
-                                                     addLike={props.addLikeAC}
-                                                     profile={props.profile}/>)
-
-    //handler for add post redux form
+    const myPostsItems = posts.map((el) => <Post key={el.id}
+                                               id={el.id}
+                                               postText={el.postText}
+                                               likesCount={el.likesCount}
+                                               deletePost={(id: string) => dispatch(deletePostAC(id))}
+                                               addLike={(id: string) => dispatch(addLikeAC(id))}
+                                               profile={profile}/>)
     const onAddPost = (formData: PostFormDataType) => {
-        props.addPostAC(formData.newPost)
+        dispatch(addPostAC(formData.newPost))
     }
 
     return (
         <div className={s.myPosts}>
-
-            <NewPostForm onSubmit={onAddPost} />
-
+            <NewPostForm onSubmit={onAddPost}/>
             <div>
-                { myPostsItems }
+                {myPostsItems}
             </div>
         </div>
     )
-
 }
-
-export default MyPosts;

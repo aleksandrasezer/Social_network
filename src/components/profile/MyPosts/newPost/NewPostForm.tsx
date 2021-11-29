@@ -7,10 +7,6 @@ import s from './NewPostForm.module.css'
 
 const maxLength60tn = maxLengthCreator(60000)
 
-export type PostFormDataType = {
-    newPost: string
-}
-
 const NewPostForm: React.FC<InjectedFormProps<PostFormDataType>> = (props) => {
     return (
         <div className={s.newPostForm}>
@@ -21,7 +17,6 @@ const NewPostForm: React.FC<InjectedFormProps<PostFormDataType>> = (props) => {
                            component={Textarea}
                            validate={[required, maxLength60tn]}/>
                 </div>
-
                 <span className={s.postButton}>
                     <Button>Post</Button>
                 </span>
@@ -31,3 +26,8 @@ const NewPostForm: React.FC<InjectedFormProps<PostFormDataType>> = (props) => {
 }
 
 export default reduxForm<PostFormDataType>({form: 'newPost'})(NewPostForm)
+
+//types
+export type PostFormDataType = {
+    newPost: string
+}
