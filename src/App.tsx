@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
 import {Switch, HashRouter, Route} from "react-router-dom";
-import HeadApiContainer from "./components/header/HeaderContainer";
 import Login from "./components/login/Login";
 import UsersContainer from "./components/users/UsersContainer";
 import {connect} from "react-redux";
@@ -12,6 +11,7 @@ import {Preload} from "./components/common/preload/Preload";
 import {Music} from "./components/music/Music";
 import {Video} from "./components/video/Video";
 import {withSuspense} from "./hoc/withSuspense";
+import {Header} from "./components/header/Header";
 
 type AppPropsType = {
     initializeApp: () => void
@@ -39,7 +39,7 @@ class App extends React.Component<AppPropsType> {
         return (
             <HashRouter>
                 <div className="app_wrapper">
-                    <HeadApiContainer/>
+                    <Header/>
                     <Navbar/>
                     <div className="app_wrapper_content">
                         <Switch>

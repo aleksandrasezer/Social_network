@@ -1,15 +1,16 @@
 import React from "react";
 import s from "./Header.module.css";
 import {NavLink} from "react-router-dom";
-import {InitStateType} from "../../redux/auth-reducer";
+import {InitStateType, logout} from "../../redux/auth-reducer";
 import headerPic from '../../assets/images/header.png'
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/redux-store";
 
-type HeaderPropsType = {
-    data: InitStateType
-    logout: () => void
-}
+export const Header = () => {
 
-function Header(props: HeaderPropsType) {
+    const data = useSelector<RootState, InitStateType>(state => state.auth)
+    const dispatch = useDispatch()
+
     return (
         <div className={s.header}>
 
@@ -17,16 +18,16 @@ function Header(props: HeaderPropsType) {
                  alt="logo"/>
 
             <div className={s.loginBlock}>
-                {props.data.isAuth
+                {data.isAuth
 
                     ? <div>
                         <NavLink to="/profile">
                             <div className={s.userName}>
-                            {props.data.login}
+                            {data.login}
                         </div>
                         </NavLink>
 
-                        <div className={s.logOut} onClick={props.logout}>
+                        <div className={s.logOut} onClick={() => dispatch(logout())}>
                             Log out
                         </div>
                     </div>
@@ -39,5 +40,3 @@ function Header(props: HeaderPropsType) {
         </div>
     )
 }
-
-export default Header;
