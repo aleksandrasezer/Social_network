@@ -2,7 +2,6 @@ import React from "react";
 import s from "./Header.module.css";
 import {NavLink} from "react-router-dom";
 import {InitStateType, logout} from "../../redux/auth-reducer";
-import headerPic from '../../assets/images/header.png'
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/redux-store";
 
@@ -13,8 +12,6 @@ export const Header = () => {
 
     return (
         <div className={s.header}>
-            <img src={headerPic}
-                 alt="logo"/>
             <div className={s.loginBlock}>
                 {data.isAuth
                     ? <div>
@@ -27,7 +24,7 @@ export const Header = () => {
                             Log out
                         </div>
                     </div>
-                    : <NavLink to={'/login'}>Login</NavLink>
+                    : <div className={s.login}><NavLink to={'/login'}>Login</NavLink></div>
                 }
             </div>
         </div>

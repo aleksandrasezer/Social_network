@@ -1,17 +1,12 @@
 .profileInfoContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 15px;
-}
-
-.profilePicBox {
-
+    padding: 15px;
 }
 
 .profilePicBox img {
-    height: 200px;
+    height: 250px;
     background: transparent;
-    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -22,11 +17,52 @@
 .profileName {
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: large;
-    text-decoration: underline;
+    font-size: x-large;
+    color: darkslateblue;
+    font-weight: bold;
     text-decoration-color: rgba(255,255,255,0.5);
 }
 .profileStatus {
     text-decoration: underline;
+    text-underline-color: white;
     text-decoration-color: rgba(255,255,255,0.5);
+    color: mediumslateblue;
+    font-weight: bold;
+}
+
+/*
+input custom button*/
+.inputPhoto {
+    text-align: center;
+}
+.inputPhoto::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.inputPhoto::before{
+    content: 'Upload new profile picture';
+    display: inline-block;
+    background-color: cornflowerblue;
+    border-top: 2px solid mediumslateblue;
+    border-left: 2px solid mediumslateblue;
+    border-bottom: 2px solid darkslateblue;
+    border-right: 2px solid darkslateblue;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.inputPhoto:active::before {
+    background-color: cornflowerblue;
+    border-bottom: 2px solid mediumslateblue;
+    border-right: 2px solid mediumslateblue;
+    border-top: 2px solid darkslateblue;
+    border-left: 2px solid darkslateblue;
+}
+.inputPhoto:hover::before {
+    background-color: royalblue;
 }

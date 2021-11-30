@@ -11,14 +11,13 @@ import {MyPosts} from "./MyPosts/MyPosts";
 function Profile(props: ProfilePropsType) {
 
     const {profile, userStatus} = useSelector((state:RootState) => state.profilePage)
-    const authorizedUserId = useSelector((state:RootState) => state.auth.userId)
+    const authorizedUserId = useSelector<RootState, null | number>(state => state.auth.userId)
     const isAuth = useSelector((state:RootState) => state.auth.isAuth)
     const dispatch = useDispatch()
 
     const refreshProfile = () => {
-        let userId = props.match.params.userId
-        if (!userId) {
-            // @ts-ignore
+        let userId = +props.match.params.userId
+        if (authorizedUserId && !userId) {
             userId = authorizedUserId
             if (!userId) {
                 props.history.push('/login')
@@ -35,8 +34,8 @@ function Profile(props: ProfilePropsType) {
     }
 
     return (
-        <div>
-            <div className={s.profile}>
+        <div className={s.profile}>
+            <div>
                 <ProfileInfo profile={profile}
                              isOwner={!props.match.params.userId}
                              userStatus={userStatus}

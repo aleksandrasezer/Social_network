@@ -7,8 +7,8 @@ import {ProfileType} from "../../../types/types";
 
 export const ProfileInfo = (props: ProfileInfoPropsType) => {
 
-    const onChangePhotoHandler = (e: any) => {
-        e.target.files.length && props.uploadProfilePic(e.target.files[0])
+    const onChangePhotoHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.target.files?.length && props.uploadProfilePic(e.target.files[0])
     }
 
     return <>
@@ -16,8 +16,10 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             ? <Preload/>
             : <div className={s.profileInfoContainer}>
                 <div className={s.profilePicBox}>
-                    <img src={props.profile.photos.large || avatar} alt='profile_avatar'/>
-                    {props.isOwner && <input type='file' onChange={onChangePhotoHandler}/>}
+                    <img src={props.profile.photos.large || avatar} alt='avatar'/>
+                    {props.isOwner && <input type='file'
+                                             onChange={onChangePhotoHandler}
+                                             className={s.inputPhoto}/>}
                 </div>
                 <div className={s.profileInfo}>
                     <div className={s.profileName}>

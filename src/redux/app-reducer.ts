@@ -20,7 +20,6 @@ const initializingSuccess = () => ({type: 'APP/INITIALIZED_SUCCESS'} as const)
 //thunk
 export const initializeApp = (): AppThunk => (dispatch) => {
     let promise = dispatch(setAuthUserData())
-    // @ts-ignore
     Promise.all([promise])
         .then(() => {
             dispatch(initializingSuccess())

@@ -1,4 +1,19 @@
 .profile {
     padding: 15px;
+    position: relative;
 }
+.profile::before {
+    content: "";
+    background-image: url("../../assets/images/rick_morty_happy.png");
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50px;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+
 

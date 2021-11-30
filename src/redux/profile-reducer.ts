@@ -57,11 +57,11 @@ const setUsersStatus = (status: string) => ({type: 'PROFILE/SET-USERS-STATUS', s
 const uploadPhotoSuccess = (photos: PhotosType) => ({type: 'PROFILE/UPLOAD-PHOTO-SUCCESS', photos} as const)
 
 //thunk-creators
-export const setUserProfileInfo = (userId: string): AppThunk => async (dispatch) => {
+export const setUserProfileInfo = (userId: number): AppThunk => async (dispatch) => {
     const userData = await profileAPI.getUserProfile(userId)
     dispatch(setUsersProfile(userData))
 }
-export const setUserStatus = (userId: string): AppThunk => async (dispatch) => {
+export const setUserStatus = (userId: number): AppThunk => async (dispatch) => {
     const response = await profileAPI.getUserStatus(userId)
     if (response.status === 200) {
         dispatch(setUsersStatus(response.data))

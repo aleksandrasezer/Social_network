@@ -16,7 +16,6 @@ import {Users} from "./components/users/Users";
 
 const Profile = React.lazy(() => import('./components/profile/Profile'))
 const ChatPage = React.lazy(() => import('./components/chat/Chat'))
-
 const SuspendedProfile = withSuspense(Profile)
 const SuspendedChatPage = withSuspense(ChatPage)
 
@@ -25,8 +24,9 @@ export const App = () => {
     const isInitialized = useSelector<RootState, boolean>(state => state.app.initialized)
     const dispatch = useDispatch()
 
-    // @ts-ignore
-    useEffect(() => dispatch(initializeApp()), [dispatch])
+    useEffect(() => {
+        dispatch(initializeApp())
+    }, [dispatch])
 
     if (!isInitialized) {
         return <Preload/>
