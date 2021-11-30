@@ -13,8 +13,6 @@ let initialState = {
     userStatus: '',
 }
 
-type InitialStateType = typeof initialState
-
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType): InitialStateType => {
     switch (action.type) {
         case 'PROFILE/DELETE-POST':
@@ -51,7 +49,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 }
 
 //action-creators
-
 export const deletePostAC = (id: string) => ({type: 'PROFILE/DELETE-POST', id} as const)
 export const addPostAC = (newPostText: string) => ({type: 'PROFILE/ADD-POST', newPostText} as const)
 export const addLikeAC = (id: string) => ({type: 'PROFILE/ADD-LIKE', id} as const)
@@ -91,4 +88,5 @@ export type ProfileActionsType =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof addLikeAC>
     | ReturnType<typeof uploadPhotoSuccess>
+type InitialStateType = typeof initialState
 

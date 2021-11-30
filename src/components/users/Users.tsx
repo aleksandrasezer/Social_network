@@ -1,56 +1,45 @@
 import React, {useEffect} from "react";
-import {UserType} from "../../types/types";
 import {User} from "./user/User";
-import {useDispatch} from "react-redux";
-import {setUsersFromServer} from "../../redux/users-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {followUser, setCurrentPage, setUsersFromServer, unfollowUser} from "../../redux/users-reducer";
 import PaginateBoxView from "react-paginate";
 import s from './Users.module.css'
 import {SearchUsersField} from "../common/search-field/SearchField";
+import {RootState} from "../../redux/redux-store";
+import {Preload} from "../common/preload/Preload";
 
-type UsersPropsType = {
-    users: UserType[]
-    totalUsersCount: number
-    currentPage: number
-    followingInProgress: number[]
-    isFetching: boolean
-    nameSearch: string
-    isFollowed: '' | boolean
-    onPageChanged: (selectedItem: { selected: number }) => void
-    follow: (id: number) => void
-    unfollow: (id: number) => void
-    pageSize: number
-    onNextPage: () => void
-    onPrevPage: () => void
-}
-
-export const Users = ({currentPage, pageSize, totalUsersCount, nameSearch,isFollowed, ...props}: UsersPropsType) => {
+export const Users = () => {
 
     const dispatch = useDispatch()
+    const {users,currentPage,totalUsersCount,pageSize,nameSearch,isFollowed,
+        followingInProgress,isFetching} = useSelector((state:RootState) => state.usersPage)
 
-    let pagesCount = Math.ceil(totalUsersCount / pageSize)
+    //for pagination
+    const onPageChanged = (selectedItem: { selected: number}) => {
+        dispatch(setCurrentPage(selectedItem.selected))
+        dispatch(setUsersFromServer(selectedItem.selected,pageSize,nameSearch,isFollowed))
+    }
+    const pagesCount = Math.ceil(totalUsersCount / pageSize)
 
     useEffect(() => {
             dispatch(setUsersFromServer(currentPage, pageSize, nameSearch, isFollowed))
         },
-        [dispatch,pageSize,currentPage,nameSearch,isFollowed])
+        [dispatch, pageSize, currentPage, nameSearch, isFollowed])
 
     return <div className={s.usersPage}>
 
-
-
-        <SearchUsersField />
-
+        {isFetching && <Preload />}
+        <SearchUsersField/>
         <div className={s.usersList}>
-            {props.users.map(u => <User key={u.id}
+            {users.map(u => <User key={u.id}
                                         id={u.id}
                                         photos={u.photos}
                                         followed={u.followed}
-                                        followingInProgress={props.followingInProgress}
-                                        unfollow={props.unfollow}
-                                        follow={props.follow}
+                                        followingInProgress={followingInProgress}
+                                        unfollow={(id: number) => dispatch(unfollowUser(id))}
+                                        follow={(id: number) => dispatch(followUser(id))}
                                         name={u.name}/>)}
         </div>
-
         <div className={s.paginateContainer}>
             <PaginateBoxView previousLabel={"<"}
                              nextLabel={">"}
@@ -59,9 +48,8 @@ export const Users = ({currentPage, pageSize, totalUsersCount, nameSearch,isFoll
                              pageCount={pagesCount}
                              pageRangeDisplayed={5}
                              marginPagesDisplayed={2}
-                             onPageChange={props.onPageChanged}
+                             onPageChange={onPageChanged}
                              containerClassName={`${s.pagination}`}
-                // subContainerClassName={"pages pagination"}
                              activeClassName={`${s.active}`}/>
         </div>
     </div>

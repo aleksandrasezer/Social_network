@@ -1,14 +1,9 @@
 import {setAuthUserData} from "./auth-reducer";
 import {AppThunk} from "./redux-store";
 
-export type AppActionsType = ReturnType<typeof initializingSuccess>
-
-let initState = {
+const initState = {
     initialized: false
 }
-
-type InitStateType = typeof initState
-
 
 export const appReducer = (state = initState, action: AppActionsType): InitStateType => {
     switch (action.type) {
@@ -30,6 +25,9 @@ export const initializeApp = (): AppThunk => (dispatch) => {
         .then(() => {
             dispatch(initializingSuccess())
         })
-
 }
+
+//types
+export type AppActionsType = ReturnType<typeof initializingSuccess>
+type InitStateType = typeof initState
 

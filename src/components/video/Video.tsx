@@ -12,12 +12,6 @@ export const Video = () => {
     )
 }
 
-
-
-type YoutubeEmbedPropsTypes = {
-    embedId: string
-}
-
 const YoutubeEmbed = (props: YoutubeEmbedPropsTypes) => (
     <div className={s.videoResponsive}>
         <iframe
@@ -30,4 +24,9 @@ const YoutubeEmbed = (props: YoutubeEmbedPropsTypes) => (
             title="Embedded youtube"
         />
     </div>
-);
+)
+
+//types
+type YoutubeEmbedPropsTypes = {
+    embedId: string
+}

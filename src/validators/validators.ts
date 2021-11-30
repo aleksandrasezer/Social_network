@@ -1,5 +1,3 @@
-
-
 export const required = (value: string) => {
     return value ? undefined : 'field required'
 }

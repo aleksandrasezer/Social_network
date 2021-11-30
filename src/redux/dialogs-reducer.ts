@@ -1,15 +1,7 @@
 import {v1} from "uuid";
 import {DialogType, MessageType} from "../types/types";
 
-type DialogsPageType = {
-    messages: MessageType[]
-    dialogs: DialogType[]
-}
-
-export type DialogsActionsType = ReturnType<typeof addMessageAC>
-
-
-let initialState = {
+const initialState = {
     messages: [{id: v1(), messageText: "Hi, how are you?"},
         {id: v1(), messageText: "Summer is coming!"},
         {id: v1(), messageText: "Yo"},
@@ -35,3 +27,10 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Di
 export const addMessageAC = (newMessageText: string) => {
     return {type: 'DIALOGS/ADD-MESSAGE', newMessageText} as const
 }
+
+//types
+type DialogsPageType = {
+    messages: MessageType[]
+    dialogs: DialogType[]
+}
+export type DialogsActionsType = ReturnType<typeof addMessageAC>

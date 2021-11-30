@@ -2,10 +2,6 @@ import {authAPI} from "../dal/api";
 import {stopSubmit} from "redux-form";
 import {AppThunk} from "./redux-store";
 
-
-export type InitStateType = typeof initState
-export type AuthActionsType = ReturnType<typeof setAuthUserLogin>
-
 const initState = {
     userId: null as number | null,
     email: null as string | null,
@@ -39,7 +35,6 @@ export const setAuthUserData = (): AppThunk => async (dispatch) => {
     }
 }
 
-
 export const login = (email: string, password: string, rememberMe: boolean = false): AppThunk => async (dispatch) => {
     const loginResp = await authAPI.login(email, password, rememberMe)
     if (loginResp.data.resultCode === 0) {
@@ -50,11 +45,14 @@ export const login = (email: string, password: string, rememberMe: boolean = fal
     }
 }
 
-
 export const logout = (): AppThunk => async (dispatch) => {
     const logoutResp = await authAPI.logout()
     if (logoutResp.data.resultCode === 0) {
         dispatch(setAuthUserLogin(null, null, null, false))
     }
 }
+
+//types
+export type InitStateType = typeof initState
+export type AuthActionsType = ReturnType<typeof setAuthUserLogin>
 

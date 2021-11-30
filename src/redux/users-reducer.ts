@@ -3,24 +3,7 @@ import {UserType} from "../types/types";
 import {AppThunk} from "./redux-store";
 import {Dispatch} from "redux";
 
-export type UsersActionsType = ReturnType<typeof follow> | ReturnType<typeof unfollow> |
-    ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
-    ReturnType<typeof setTotalUsersCount> | ReturnType<typeof setIsFetching> |
-    ReturnType<typeof setFollowingProgress> | ReturnType<typeof setNameSearch>
-    | ReturnType<typeof setIsFollowed>
-
-export type UsersPageType = {
-    users: UserType[]
-    currentPage: number
-    totalUsersCount: number
-    pageSize: number
-    isFetching: boolean
-    followingInProgress: number[]
-    nameSearch: string
-    isFollowed: '' | boolean
-}
-
-let initialState: UsersPageType = {
+const initialState: UsersPageType = {
     users: [],
     currentPage: 1,
     totalUsersCount: 0,
@@ -60,6 +43,7 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
     }
 }
 
+//action creators
 const follow = (id: number) => ({type: 'USERS/FOLLOW', id}) as const
 const unfollow = (id: number) => ({type: 'USERS/UNFOLLOW', id}) as const
 const setUsers = (users: UserType[]) => ({type: 'USERS/SET-USERS', users}) as const
@@ -68,7 +52,6 @@ const setTotalUsersCount = (totalUsers: number) => ({type: 'USERS/SET-TOTAL-USER
 const setIsFetching = (isFetching: boolean) => ({type: 'USERS/SET-IS-FETCHING', isFetching}) as const
 export const setNameSearch = (nameSearch: string) => ({type: 'USERS/SET-NAME-SEARCH', nameSearch}) as const
 export const setIsFollowed = (isFollowed: '' | boolean) => ({type: 'USERS/SET-IS-FOLLOWED', isFollowed}) as const
-
 const setFollowingProgress = (inProgress: boolean, userId: number) => ({
     type: 'USERS/SET-FOLLOWING-PROGRESS',
     inProgress,
@@ -110,6 +93,24 @@ export const unfollowUser = (userId: number): AppThunk => {
     return async (dispatch) => {
         await _followUnfollow(dispatch, userId, followAPI.unfollowUser.bind(followAPI), unfollow);
     }
+}
+
+//types
+export type UsersActionsType = ReturnType<typeof follow> | ReturnType<typeof unfollow> |
+    ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
+    ReturnType<typeof setTotalUsersCount> | ReturnType<typeof setIsFetching> |
+    ReturnType<typeof setFollowingProgress> | ReturnType<typeof setNameSearch>
+    | ReturnType<typeof setIsFollowed>
+
+export type UsersPageType = {
+    users: UserType[]
+    currentPage: number
+    totalUsersCount: number
+    pageSize: number
+    isFetching: boolean
+    followingInProgress: number[]
+    nameSearch: string
+    isFollowed: '' | boolean
 }
 
 

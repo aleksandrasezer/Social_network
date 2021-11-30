@@ -9,8 +9,6 @@ const instance = axios.create(
         }
     })
 
-
-
 export const profileAPI = {
     getUserProfile(userId: string) {
         return instance.get(`profile/${userId}`)
@@ -55,11 +53,9 @@ export const authAPI = {
 export const followAPI = {
     followUser(userId: number) {
         return instance.post(`follow/${userId}`).then(response => response.data)
-
     },
     unfollowUser(userId: number) {
         return instance.delete(`follow/${userId}`).then(response => response.data)
-
     },
 }
 
