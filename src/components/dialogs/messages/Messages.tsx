@@ -6,8 +6,7 @@ import MessageForm, {MessageFormDataType} from "./message/newMessage/NewMessage"
 
 export const Messages = (props: MessagesPropsType) => {
 
-        let messagesItems = props.messages.map((el) => <Message key={el.id} id={el.id} message={el.messageText}/>)
-    console.log(props.messages)
+    let messagesItems = props.messages.map((el) => <Message key={el.id} id={el.id} message={el.messageText}/>)
 
     const onAddMessage = (formData: MessageFormDataType) => {
         props.addMessage(formData.message)
@@ -18,7 +17,7 @@ export const Messages = (props: MessagesPropsType) => {
             <div className={s.messages}>
                 {messagesItems}
             </div>
-            <MessageForm onSubmit={onAddMessage} />
+            <MessageForm onSubmit={onAddMessage}/>
         </div>
     )
 }
